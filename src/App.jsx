@@ -719,10 +719,10 @@ function App() {
   ];
 
   const projectsData = [
-    { title:"Website OSIM MAN 1 Medan", desc:"Website resmi OSIM MAN 1 Medan yang menyajikan informasi terkini tentang siswa/siswi MAN 1 Medan.", tech:["HTML","CSS","Website"], type:"website", link:"https://osimman1medan.vercel.app/", img:null },
-    { title:"Sistem Monitoring Kelas", desc:"Aplikasi untuk memonitoring kehadiran dan aktivitas mahasiswa di dalam kelas secara real-time.", tech:["FastAPI","SQLServer","PHP"], type:"project", link:null, img:null },
-    { title:"Proyek Penjualan", desc:"Sistem informasi untuk mengelola penjualan produk secara efisien dan efektif.", tech:["React Client","PHP","MySQL"], type:"website", link:"https://proyekpenjualan.infinityfreeapp.com/", img:null },
-    { title:"Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Laragon","Mathlab","Streamlit","Python"], type:"project", link:null, img:null },
+    { title:"Website OSIM MAN 1 Medan", desc:"Website resmi OSIM MAN 1 Medan yang menyajikan informasi terkini tentang siswa/siswi MAN 1 Medan.", tech:["HTML","CSS","Website"], type:"website", link:"https://osimman1medan.vercel.app/", img:"osim.png" },
+    { title:"Sistem Monitoring Kelas", desc:"Aplikasi untuk memonitoring kehadiran dan aktivitas mahasiswa di dalam kelas secara real-time.", tech:["FastAPI","SQLServer","PHP"], type:"project", link:null, img:"sistem.jpeg" },
+    { title:"Proyek Penjualan", desc:"Sistem informasi untuk mengelola penjualan produk secara efisien dan efektif.", tech:["React Client","PHP","MySQL"], type:"website", link:"https://proyekpenjualan.infinityfreeapp.com/", img:"proyekpenjualan.jpeg" },
+    { title:"Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Laragon","Mathlab","Streamlit","Python"], type:"project", link:null, img:"streamlit.png" },
   ];
 
   const navLinks = ["Profile","Organisasi","Skill","Projects","Sertifikat","Contact"];

@@ -723,6 +723,7 @@ function App() {
     { title:"Sistem Monitoring Kelas", desc:"Aplikasi untuk memonitoring kehadiran dan aktivitas mahasiswa di dalam kelas secara real-time.", tech:["FastAPI","SQLServer","PHP"], type:"project", link:"https://sistemmonitoringkelas.page.gd/", img:"sistem.jpeg" },
     { title:"Proyek Penjualan", desc:"Sistem informasi untuk mengelola penjualan produk secara efisien dan efektif.", tech:["React Client","PHP","MySQL"], type:"website", link:"https://proyekpenjualan.infinityfreeapp.com/", img:"proyekpenjualan.jpeg" },
     { title:"Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Laragon","Mathlab","Streamlit","Python"], type:"project", link:null, img:"streamlit.png" },
+    { title:"Project Ucapan Ulang Tahun", desc:"Sistem web interaktif untuk menampilkan ucapan ulang tahun dengan animasi, gambar, dan musik secara personal.", tech:["HTML","CSS","JavaScript"], type:"project", link:"https://happy-birthday-nayla.vercel.app/", img:"webnayla.png" },
   ];
 
   const navLinks = ["Profile","Organisasi","Skill","Projects","Sertifikat","Contact"];

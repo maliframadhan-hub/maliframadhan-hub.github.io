@@ -53,7 +53,6 @@ function LoadingScreen({ onFinish }) {
       visibility: hiding ? "hidden" : "visible",
       transition: "opacity 0.8s ease, visibility 0.8s ease",
       overflow: "hidden",
-      padding: "16px",
     }}>
       <style>{`
         @keyframes loaderScanH {
@@ -101,7 +100,7 @@ function LoadingScreen({ onFinish }) {
       }} />
 
       {/* Center content */}
-      <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 0, width: "100%", maxWidth: 320 }}>
+      <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
 
         {/* Logo ring */}
         <div style={{ position: "relative", width: 88, height: 88, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 28 }}>
@@ -126,7 +125,7 @@ function LoadingScreen({ onFinish }) {
 
         {/* Name */}
         <div style={{ textAlign: "center", marginBottom: 28, animation: "loaderFadeUp 0.6s ease 0.4s both" }}>
-          <h1 style={{ fontSize: "clamp(19px, 5vw, 24px)", fontWeight: 900, color: "#f8fafc", letterSpacing: "-0.5px", margin: "0 0 6px 0", lineHeight: 1.1 }}>
+          <h1 style={{ fontSize: 24, fontWeight: 900, color: "#f8fafc", letterSpacing: "-0.5px", margin: "0 0 6px 0", lineHeight: 1.1 }}>
             M. Alif Ramadhan
           </h1>
           <p style={{ fontSize: 11, color: "#475569", fontFamily: "monospace", letterSpacing: "2.5px", textTransform: "uppercase", margin: 0 }}>
@@ -135,7 +134,7 @@ function LoadingScreen({ onFinish }) {
         </div>
 
         {/* Progress */}
-        <div style={{ width: "100%", maxWidth: 220, animation: "loaderFadeUp 0.5s ease 0.9s both", marginBottom: 24 }}>
+        <div style={{ width: 220, animation: "loaderFadeUp 0.5s ease 0.9s both", marginBottom: 24 }}>
           <div style={{ height: 2, background: "rgba(255,255,255,0.07)", borderRadius: 999, overflow: "hidden", marginBottom: 10 }}>
             <div style={{
               height: "100%",
@@ -225,7 +224,7 @@ function LiveClock() {
   useEffect(() => { const t = setInterval(() => setNow(new Date()), 1000); return () => clearInterval(t); }, []);
   const pad = n => String(n).padStart(2, "0");
   return (
-    <div style={{ display:"flex", alignItems:"center", gap:"16px", fontSize:"13px", color:"#64748b", fontFamily:"monospace", fontWeight:"500", flexWrap:"wrap" }}>
+    <div style={{ display:"flex", alignItems:"center", gap:"16px", fontSize:"13px", color:"#64748b", fontFamily:"monospace", fontWeight:"500" }}>
       <span style={{ display:"flex", alignItems:"center", gap:"5px" }}>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         {pad(now.getHours())}.{pad(now.getMinutes())}.{pad(now.getSeconds())}
@@ -251,18 +250,18 @@ function WarningModal({ reason, onClose }) {
   };
   return (
     <div style={{ position:"fixed", inset:0, zIndex:99999, display:"flex", alignItems:"center", justifyContent:"center", padding:"20px", backgroundColor:"rgba(0,0,0,0.82)", backdropFilter:"blur(8px)" }}>
-      <div style={{ width:"100%", maxWidth:"420px", maxHeight:"90vh", overflowY:"auto", backgroundColor:"#12121f", border:"1.5px solid rgba(220,38,38,0.45)", borderRadius:"20px", padding:"32px 24px 24px", textAlign:"center", boxShadow:"0 32px 80px rgba(0,0,0,0.7)", animation:"modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards" }}>
-        <div style={{ width:"64px", height:"64px", borderRadius:"50%", backgroundColor:"rgba(220,38,38,0.12)", border:"1.5px solid rgba(220,38,38,0.35)", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 18px auto" }}>
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div style={{ width:"100%", maxWidth:"420px", backgroundColor:"#12121f", border:"1.5px solid rgba(220,38,38,0.45)", borderRadius:"20px", padding:"36px 28px 28px", textAlign:"center", boxShadow:"0 32px 80px rgba(0,0,0,0.7)", animation:"modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards" }}>
+        <div style={{ width:"72px", height:"72px", borderRadius:"50%", backgroundColor:"rgba(220,38,38,0.12)", border:"1.5px solid rgba(220,38,38,0.35)", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 20px auto" }}>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         </div>
-        <h2 style={{ margin:"0 0 6px 0", fontSize:"20px", fontWeight:"800", color:"#f8fafc" }}>Akses Ditolak</h2>
+        <h2 style={{ margin:"0 0 6px 0", fontSize:"22px", fontWeight:"800", color:"#f8fafc" }}>Akses Ditolak</h2>
         <p style={{ margin:"0 0 14px 0", fontSize:"12px", fontWeight:"700", color:"#ef4444", fontFamily:"monospace", textTransform:"uppercase" }}>⚠ {reasonLabels[reason] || "Tindakan tidak diizinkan terdeteksi."}</p>
-        <p style={{ margin:"0 0 20px 0", fontSize:"13px", color:"#94a3b8", lineHeight:"1.7" }}>Tindakan Anda merekayasa, memodifikasi, atau mengakses sistem tanpa hak merupakan pelanggaran hukum sesuai dengan <span style={{ color:"#ef4444", fontWeight:"700" }}>UU ITE Pasal 30 ayat (1), (2), dan (3).</span></p>
-        <div style={{ backgroundColor:"rgba(220,38,38,0.08)", border:"1px solid rgba(220,38,38,0.25)", borderRadius:"10px", padding:"12px 14px", marginBottom:"22px" }}>
+        <p style={{ margin:"0 0 20px 0", fontSize:"14px", color:"#94a3b8", lineHeight:"1.7" }}>Tindakan Anda merekayasa, memodifikasi, atau mengakses sistem tanpa hak merupakan pelanggaran hukum sesuai dengan <span style={{ color:"#ef4444", fontWeight:"700" }}>UU ITE Pasal 30 ayat (1), (2), dan (3).</span></p>
+        <div style={{ backgroundColor:"rgba(220,38,38,0.08)", border:"1px solid rgba(220,38,38,0.25)", borderRadius:"10px", padding:"12px 16px", marginBottom:"24px" }}>
           <p style={{ margin:0, fontSize:"12px", color:"#f87171", fontFamily:"monospace", lineHeight:"1.6" }}>Setiap aktivitas dicatat demi keamanan sistem.</p>
         </div>
         <button onClick={onClose}
-          style={{ width:"100%", padding:"14px", backgroundColor:"#dc2626", border:"none", borderRadius:"12px", color:"#fff", fontSize:"15px", fontWeight:"700", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:"8px" }}
+          style={{ width:"100%", padding:"14px", backgroundColor:"#dc2626", border:"none", borderRadius:"12px", color:"#fff", fontSize:"16px", fontWeight:"700", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:"8px" }}
           onMouseEnter={e => e.currentTarget.style.backgroundColor="#b91c1c"}
           onMouseLeave={e => e.currentTarget.style.backgroundColor="#dc2626"}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -278,25 +277,25 @@ function WarningModal({ reason, onClose }) {
 // ─────────────────────────────────────────────
 function SecurityModal({ onClose }) {
   const items = [
-    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>, title:"Protected by Cloudflare CDN", desc:"Global Edge Caching & WAF Active", color:"#38bdf8" },
-    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, title:"XSS Protection Active (CSP)", desc:"Content Security Policy Implemented", color:"#22c55e" },
-    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>, title:"HSTS (Strict Transport Security)", desc:"Force HTTPS Connection Active", color:"#22c55e" },
-    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>, title:"Input Sanitization Enforced", desc:"Mencegah Injeksi Kode Berbahaya (XSS/SQLi)", color:"#22c55e" },
-    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>, title:"DDoS Rate Limiting", desc:"Mencegah Kelebihan Beban Lalu Lintas", color:"#f59e0b" },
-    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>, title:"Vercel Deployment Integrity", desc:"Serverless Functions Isolated & Monitored", color:"#818cf8" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>, title:"Protected by Cloudflare CDN", desc:"Global Edge Caching & WAF Active", color:"#38bdf8" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, title:"XSS Protection Active (CSP)", desc:"Content Security Policy Implemented", color:"#22c55e" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>, title:"HSTS (Strict Transport Security)", desc:"Force HTTPS Connection Active", color:"#22c55e" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>, title:"Input Sanitization Enforced", desc:"Mencegah Injeksi Kode Berbahaya (XSS/SQLi)", color:"#22c55e" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>, title:"DDoS Rate Limiting", desc:"Mencegah Kelebihan Beban Lalu Lintas", color:"#f59e0b" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>, title:"Vercel Deployment Integrity", desc:"Serverless Functions Isolated & Monitored", color:"#818cf8" },
   ];
   return (
-    <div style={{ position:"fixed", inset:0, zIndex:99998, display:"flex", alignItems:"center", justifyContent:"center", padding:"16px", backgroundColor:"rgba(0,0,0,0.75)", backdropFilter:"blur(10px)" }}
+    <div style={{ position:"fixed", inset:0, zIndex:99998, display:"flex", alignItems:"center", justifyContent:"center", padding:"20px", backgroundColor:"rgba(0,0,0,0.75)", backdropFilter:"blur(10px)" }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div style={{ width:"100%", maxWidth:"460px", maxHeight:"88vh", overflowY:"auto", backgroundColor:"#1a2035", border:"1px solid rgba(255,255,255,0.08)", borderRadius:"20px", overflow:"hidden", boxShadow:"0 40px 80px rgba(0,0,0,0.6)", animation:"modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards" }}>
-        <div style={{ padding:"22px 20px 18px", borderBottom:"1px solid rgba(255,255,255,0.07)", display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:"12px" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:"12px", minWidth:0 }}>
-            <div style={{ width:"40px", height:"40px", borderRadius:"12px", backgroundColor:"rgba(34,197,94,0.12)", border:"1px solid rgba(34,197,94,0.3)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div style={{ width:"100%", maxWidth:"460px", backgroundColor:"#1a2035", border:"1px solid rgba(255,255,255,0.08)", borderRadius:"20px", overflow:"hidden", boxShadow:"0 40px 80px rgba(0,0,0,0.6)", animation:"modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards" }}>
+        <div style={{ padding:"24px 24px 20px", borderBottom:"1px solid rgba(255,255,255,0.07)", display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:"12px" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:"12px" }}>
+            <div style={{ width:"42px", height:"42px", borderRadius:"12px", backgroundColor:"rgba(34,197,94,0.12)", border:"1px solid rgba(34,197,94,0.3)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <div style={{ minWidth:0 }}>
-              <h3 style={{ margin:0, fontSize:"16px", fontWeight:"800", color:"#22c55e" }}>Security & Compliance Report</h3>
-              <p style={{ margin:"4px 0 0 0", fontSize:"11px", color:"#94a3b8", lineHeight:"1.5" }}>Aplikasi ini dirancang dengan standar keamanan modern.</p>
+            <div>
+              <h3 style={{ margin:0, fontSize:"18px", fontWeight:"800", color:"#22c55e" }}>Security & Compliance Report</h3>
+              <p style={{ margin:"4px 0 0 0", fontSize:"12px", color:"#94a3b8", lineHeight:"1.5" }}>Aplikasi ini dirancang dengan standar keamanan modern.</p>
             </div>
           </div>
           <button onClick={onClose} style={{ background:"none", border:"none", cursor:"pointer", color:"#64748b", padding:"4px", borderRadius:"8px", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}
@@ -305,18 +304,18 @@ function SecurityModal({ onClose }) {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
-        <div style={{ padding:"14px", display:"flex", flexDirection:"column", gap:"8px" }}>
+        <div style={{ padding:"16px", display:"flex", flexDirection:"column", gap:"8px" }}>
           {items.map((item, i) => (
-            <div key={i} style={{ display:"flex", alignItems:"center", gap:"12px", padding:"12px 14px", backgroundColor:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.06)", borderRadius:"12px" }}>
-              <div style={{ width:"36px", height:"36px", borderRadius:"10px", backgroundColor:`${item.color}18`, border:`1px solid ${item.color}30`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>{item.icon}</div>
-              <div style={{ minWidth:0 }}>
-                <p style={{ margin:0, fontSize:"13px", fontWeight:"700", color:"#f1f5f9" }}>{item.title}</p>
-                <p style={{ margin:"2px 0 0 0", fontSize:"11px", color:"#64748b" }}>{item.desc}</p>
+            <div key={i} style={{ display:"flex", alignItems:"center", gap:"14px", padding:"14px 16px", backgroundColor:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.06)", borderRadius:"12px" }}>
+              <div style={{ width:"40px", height:"40px", borderRadius:"10px", backgroundColor:`${item.color}18`, border:`1px solid ${item.color}30`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>{item.icon}</div>
+              <div>
+                <p style={{ margin:0, fontSize:"14px", fontWeight:"700", color:"#f1f5f9" }}>{item.title}</p>
+                <p style={{ margin:"2px 0 0 0", fontSize:"12px", color:"#64748b" }}>{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
-        <div style={{ padding:"14px 18px", borderTop:"1px solid rgba(255,255,255,0.07)", display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:"6px" }}>
+        <div style={{ padding:"16px 20px", borderTop:"1px solid rgba(255,255,255,0.07)", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"6px" }}>
             <span style={{ width:"8px", height:"8px", backgroundColor:"#22c55e", borderRadius:"50%", display:"inline-block" }}/>
             <span style={{ fontSize:"12px", color:"#22c55e", fontWeight:"600" }}>All systems operational</span>
@@ -329,7 +328,7 @@ function SecurityModal({ onClose }) {
 }
 
 // ─────────────────────────────────────────────
-// PROJECT CARD
+// PROJECT CARD — FIXED MOBILE THUMBNAIL
 // ─────────────────────────────────────────────
 function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
   const [hovered, setHovered]   = useState(false);
@@ -339,7 +338,8 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
   const hasLink      = proj.link && proj.link !== "#";
   const isWebsite    = proj.type === "website";
 
-  const thumbHeight = isMobile ? "200px" : isTablet ? "190px" : "185px";
+  // ✅ FIX: Tinggi thumbnail lebih besar di mobile agar konten tidak terpotong
+  const thumbHeight = isMobile ? "260px" : isTablet ? "220px" : "185px";
 
   return (
     <div
@@ -357,12 +357,12 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
         boxShadow: hovered ? "0 24px 48px rgba(37,99,235,0.14)" : "0 2px 8px rgba(0,0,0,0.04)",
         position: "relative",
         cursor: hasLink ? "pointer" : "default",
-        height: "100%",
       }}
       onClick={() => hasLink && window.open(proj.link, "_blank")}
     >
       <div style={{ height:"3px", background: hovered ? "linear-gradient(90deg,#2563eb,#60a5fa)" : "transparent", transition:"background 0.3s ease" }} />
 
+      {/* ✅ FIX: Thumbnail dengan aspect-ratio konsisten, tidak crop di mobile */}
       <div style={{
         width: "100%",
         height: thumbHeight,
@@ -380,6 +380,7 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              // ✅ FIX: objectPosition "top center" agar bagian atas gambar selalu terlihat
               objectPosition: "top center",
               display: "block",
               transition: "transform 0.4s ease",
@@ -394,7 +395,7 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
               ? "linear-gradient(135deg,#1e2a45,#0f1729)"
               : "linear-gradient(135deg,#dde6f5,#eef2f8)",
           }}>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={darkMode?"#4f6090":"#94a3b8"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={darkMode?"#4f6090":"#94a3b8"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
             <span style={{ fontSize:"12px", color: darkMode?"#4f6090":"#94a3b8", fontWeight:"600" }}>Preview Unavailable</span>
@@ -467,7 +468,8 @@ function CertCard({ cert, theme, darkMode, isMobile, isTablet }) {
   const hasThumbnail = cert.img && !imgError;
   const hasLink      = cert.link && cert.link !== "#";
 
-  const thumbHeight = isMobile ? "180px" : isTablet ? "190px" : "165px";
+  // ✅ FIX: Tinggi thumbnail sertifikat lebih besar di mobile
+  const thumbHeight = isMobile ? "230px" : isTablet ? "200px" : "165px";
 
   return (
     <div
@@ -484,7 +486,6 @@ function CertCard({ cert, theme, darkMode, isMobile, isTablet }) {
         transform: hovered ? "translateY(-5px)" : "translateY(0)",
         boxShadow: hovered ? "0 20px 40px rgba(37,99,235,0.12)" : "0 2px 8px rgba(0,0,0,0.04)",
         position: "relative",
-        height: "100%",
       }}
     >
       <div style={{ height:"3px", background: hovered ? "linear-gradient(90deg,#2563eb,#60a5fa)" : "transparent", transition:"background 0.3s ease" }} />
@@ -494,12 +495,13 @@ function CertCard({ cert, theme, darkMode, isMobile, isTablet }) {
             style={{
               width:"100%", height:"100%",
               objectFit:"cover",
+              // ✅ FIX: top center agar tidak crop bagian penting
               objectPosition:"top center",
               display:"block",
             }} />
         ) : (
           <div style={{ width:"100%", height:"100%", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:"8px", background: darkMode?"linear-gradient(135deg,#1e2a45,#0f1729)":"linear-gradient(135deg,#dde6f5,#eef2f8)" }}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={darkMode?"#4f6090":"#94a3b8"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={darkMode?"#4f6090":"#94a3b8"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
             </svg>
             <span style={{ fontSize:"11px", color: darkMode?"#4f6090":"#94a3b8", fontWeight:"600" }}>Certificate</span>
@@ -546,7 +548,7 @@ function BackToTop() {
   }, []);
   return (
     <button onClick={() => window.scrollTo({ top:0, behavior:"smooth" })} aria-label="Kembali ke atas"
-      style={{ position:"fixed", bottom:"20px", right:"20px", width:"44px", height:"44px", borderRadius:"50%", background:"#2563eb", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", zIndex:998, boxShadow:"0 4px 18px rgba(37,99,235,0.5)", transition:"opacity 0.3s ease, transform 0.3s ease", opacity:visible?1:0, transform:visible?"translateY(0)":"translateY(16px)", pointerEvents:visible?"auto":"none" }}
+      style={{ position:"fixed", bottom:"28px", right:"28px", width:"46px", height:"46px", borderRadius:"50%", background:"#2563eb", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", zIndex:998, boxShadow:"0 4px 18px rgba(37,99,235,0.5)", transition:"opacity 0.3s ease, transform 0.3s ease", opacity:visible?1:0, transform:visible?"translateY(0)":"translateY(16px)", pointerEvents:visible?"auto":"none" }}
       onMouseEnter={e => { e.currentTarget.style.background="#1d4ed8"; e.currentTarget.style.transform="scale(1.1)"; }}
       onMouseLeave={e => { e.currentTarget.style.background="#2563eb"; e.currentTarget.style.transform="scale(1)"; }}>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
@@ -563,6 +565,7 @@ function scrollTo(id) {
 // APP
 // ─────────────────────────────────────────────
 function App() {
+  // ✅ LOADING SCREEN STATE
   const [appLoaded, setAppLoaded]         = useState(false);
   const handleLoadFinish                  = useCallback(() => setAppLoaded(true), []);
 
@@ -582,10 +585,6 @@ function App() {
 
   useScrollAnimation();
 
-  // ── Breakpoints tuned for real devices:
-  // < 480: small phones (Android/iOS) · 480-767: large phones/phablets
-  // 768-1023: tablets (iPad/Android tab) · 1024+: desktop
-  const isSmallPhone     = windowWidth < 480;
   const isMobile         = windowWidth < 768;
   const isTablet         = windowWidth >= 768 && windowWidth < 1024;
   const isDesktop        = windowWidth >= 1024;
@@ -649,14 +648,12 @@ function App() {
 
   const [mousePos, setMousePos] = useState({ x:0, y:0 });
   useEffect(() => {
-    if (isMobileOrTablet) return; // parallax off for touch devices
     const handler = (e) => setMousePos({ x:(e.clientX - window.innerWidth/2)*0.03, y:(e.clientY - window.innerHeight/2)*0.03 });
     window.addEventListener("mousemove", handler);
     return () => window.removeEventListener("mousemove", handler);
-  }, [isMobileOrTablet]);
+  }, []);
 
   const handlePhotoMouseMove = (e) => {
-    if (isMobileOrTablet) return;
     const rect = e.currentTarget.getBoundingClientRect();
     setPhotoMousePos({ x:((e.clientX-rect.left)/rect.width-0.5)*20, y:((e.clientY-rect.top)/rect.height-0.5)*20 });
   };
@@ -727,7 +724,7 @@ function App() {
     { title:"Proyek Penjualan", desc:"Sistem informasi untuk mengelola penjualan produk secara efisien dan efektif.", tech:["React Client","PHP","MySQL"], type:"website", link:"https://proyekpenjualan.infinityfreeapp.com/", img:"proyekpenjualan.jpeg" },
     { title:"Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Pandas","Matplotlib","Streamlit","Python"], type:"project", link:"https://9wowf62gvi4vvjyr2d23st.streamlit.app/", img:"streamlit.png" },
     { title:"Project Ucapan Ulang Tahun", desc:"Sistem web interaktif untuk menampilkan ucapan ulang tahun dengan animasi, gambar, dan musik secara personal.", tech:["HTML","CSS","JavaScript"], type:"project", link:"https://happy-birthday-nayla.vercel.app/", img:"webnayla.png" },
-    { title:"RECYNT AI - Recycle Intelligent Waste Detection System", desc:"Aplikasi berbasis AI untuk mendeteksi jenis sampah, memberikan informasi daur ulang, serta membantu pengelolaan limbah secara cerdas dan ramah lingkungan.", tech:["HTML","CSS","JavaScript","Node.js","YoLov8","Python","FastAPI","MySQL"], type:"project", link:"https://recynt-ai.vercel.app/", img:"recyntai.png" },
+    { title:"RECYNT AI - WASTE DETECTION SYSTEM", desc:"Aplikasi berbasis AI untuk mendeteksi jenis sampah, memberikan informasi daur ulang, serta membantu pengelolaan limbah secara cerdas dan ramah lingkungan.", tech:["HTML","CSS","JavaScript","Node.js","YoLov8","Python","FastAPI","MySQL"], type:"website application", link:"https://recynt-ai.vercel.app/", img:"recyntai.png" },  
   ];
 
   const navLinks = ["Profile","Organisasi","Skill","Projects","Sertifikat","Contact"];
@@ -753,23 +750,20 @@ function App() {
   const doubled = [...stackTechs, ...stackTechs];
 
   const heroGrid   = isDesktop ? "1fr auto 1.3fr" : "1fr";
-  const heroNameFS = isSmallPhone ? "24px" : isMobile ? "28px" : isTablet ? "40px" : "52px";
-  const heroSubFS  = isSmallPhone ? "15px" : isMobile ? "17px" : isTablet ? "22px" : "26px";
-  const heroPad    = isSmallPhone ? "28px 16px 32px" : isMobile ? "32px 20px 40px" : isTablet ? "48px 32px 56px" : "80px 40px 60px 40px";
-  const sectionPad = isSmallPhone ? "36px 16px" : isMobile ? "40px 20px" : isTablet ? "60px 32px" : "80px 10%";
-  const navPad     = isSmallPhone ? "12px 14px" : isMobile ? "14px 20px" : "18px 10%";
+  const heroNameFS = isMobile ? "28px" : isTablet ? "40px" : "52px";
+  const heroSubFS  = isMobile ? "17px" : isTablet ? "22px" : "26px";
+  const heroPad    = isMobile ? "32px 20px 40px" : isTablet ? "48px 32px 56px" : "80px 40px 60px 40px";
+  const sectionPad = isMobile ? "40px 20px" : isTablet ? "60px 32px" : "80px 10%";
+  const navPad     = isMobile ? "14px 20px" : "18px 10%";
   const orgCols    = isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)";
-  const projCols   = isMobile ? "1fr" : "repeat(2,1fr)";
-  const certCols   = isMobile ? "repeat(2,1fr)" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)";
-  const certStatCols = isSmallPhone ? "repeat(2,1fr)" : "repeat(4,1fr)";
-  const skillCols  = isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)";
-  const heroStatCols = isSmallPhone ? "repeat(2,1fr)" : "repeat(4,1fr)";
-  const btn        = { textDecoration:"none", padding:isSmallPhone?"9px 12px":isMobile?"9px 14px":"10px 20px", fontSize:"13px", fontWeight:"700", borderRadius:"8px", cursor:"pointer", display:"inline-flex", alignItems:"center", justifyContent:"center", transition:"all 0.2s ease", whiteSpace:"nowrap" };
+  const btn        = { textDecoration:"none", padding:isMobile?"9px 14px":"10px 20px", fontSize:"13px", fontWeight:"700", borderRadius:"8px", cursor:"pointer", display:"inline-flex", alignItems:"center", justifyContent:"center", transition:"all 0.2s ease", whiteSpace:"nowrap" };
 
   return (
     <>
+      {/* ✅ LOADING SCREEN — tampil dulu sebelum konten */}
       {!appLoaded && <LoadingScreen onFinish={handleLoadFinish} />}
 
+      {/* ✅ MAIN CONTENT — fade in setelah loading selesai */}
       <div style={{
         margin: 0,
         fontFamily: "'Plus Jakarta Sans','Inter',sans-serif",
@@ -780,8 +774,6 @@ function App() {
         position: "relative",
         transition: "background-color 0.3s ease, color 0.3s ease, opacity 0.8s ease",
         opacity: appLoaded ? 1 : 0,
-        width: "100%",
-        maxWidth: "100vw",
       }}>
 
         {warning.show && <WarningModal reason={warning.reason} onClose={() => setWarning({ show:false, reason:"" })} />}
@@ -790,7 +782,7 @@ function App() {
 
         <style>{`
           * { box-sizing:border-box; }
-          html, body { margin:0; padding:0; max-width:100%; overflow-x:hidden; }
+          body { margin:0; padding:0; }
           @keyframes modalIn    { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
           @keyframes blink      { 0%,100%{opacity:1} 50%{opacity:0} }
           @keyframes slideDown  { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
@@ -855,17 +847,6 @@ function App() {
           @media (max-width:767px) {
             .manifesto-quote { font-size:18px !important; }
             .section-heading { font-size:20px !important; }
-            .photo-wrapper { max-width:140px !important; }
-            .photo-inner, .photo-inner img { height:140px !important; width:140px !important; }
-          }
-          @media (max-width:479px) {
-            .nav-brand-text { font-size:12px !important; }
-            .hero-stat-num { font-size:16px !important; }
-            .hero-stat-label { font-size:10px !important; }
-          }
-          @media (max-width:359px) {
-            .photo-wrapper { max-width:120px !important; }
-            .photo-inner, .photo-inner img { height:120px !important; width:120px !important; }
           }
         `}</style>
 
@@ -873,15 +854,15 @@ function App() {
         <div style={{ position:"fixed", top:"-5%", left:"-5%", width:"110%", height:"110%", pointerEvents:"none", zIndex:0, backgroundImage:`linear-gradient(to right,${theme.gridColor} 1px,transparent 1px),linear-gradient(to bottom,${theme.gridColor} 1px,transparent 1px)`, backgroundSize:"40px 40px", transform:`translate(${mousePos.x}px,${mousePos.y}px)`, transition:"transform 0.1s cubic-bezier(0.25,1,0.5,1)" }} />
 
         {/* NAVBAR */}
-        <nav style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:navPad, backgroundColor:theme.navBg, borderBottom:`1px solid ${theme.border}`, backdropFilter:"blur(20px)", WebkitBackdropFilter:"blur(20px)", position:"sticky", top:0, zIndex:1000, transition:"background-color 0.3s ease", gap:"8px" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:"2px", minWidth:0, overflow:"hidden", flexShrink:1 }}>
+        <nav style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:navPad, backgroundColor:theme.navBg, borderBottom:`1px solid ${theme.border}`, backdropFilter:"blur(20px)", WebkitBackdropFilter:"blur(20px)", position:"sticky", top:0, zIndex:1000, transition:"background-color 0.3s ease" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:"2px", minWidth:0, overflow:"hidden" }}>
             <span style={{ color:"#2563eb", fontWeight:"700", fontSize:"16px", flexShrink:0 }}>$</span>
-            <h2 className="nav-brand-text" style={{ margin:0, fontSize:isSmallPhone?"12px":isMobile?"13px":"16px", fontWeight:"600", fontFamily:"monospace", color:theme.text, display:"flex", alignItems:"center", whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis", minWidth:0 }}>
+            <h2 style={{ margin:0, fontSize:isMobile?"13px":"16px", fontWeight:"600", fontFamily:"monospace", color:theme.text, display:"flex", alignItems:"center", whiteSpace:"nowrap" }}>
               &nbsp;alif <span style={{ color:"#64748b" }}>&nbsp;@portfolio</span>
               <span className="brand-cursor" style={{ backgroundColor:brandingCursor?"#2563eb":"transparent", transition:"background-color 0.05s", flexShrink:0 }} />
             </h2>
           </div>
-          <div style={{ display:"flex", alignItems:"center", gap:isSmallPhone?"6px":"8px", flexShrink:0 }} ref={menuRef}>
+          <div style={{ display:"flex", alignItems:"center", gap:"8px", flexShrink:0 }} ref={menuRef}>
             <button onClick={() => setDarkMode(!darkMode)}
               style={{ background:"none", border:`1px solid ${theme.border}`, backgroundColor:theme.cardBg, borderRadius:"50%", width:"38px", height:"38px", minWidth:"38px", display:"flex", justifyContent:"center", alignItems:"center", cursor:"pointer", transition:"transform 0.2s ease" }}
               onMouseEnter={e => e.currentTarget.style.transform="scale(1.06) rotate(15deg)"}
@@ -891,13 +872,11 @@ function App() {
                 : <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
               }
             </button>
-            {!isSmallPhone && (
-              <div className="secure-btn" onClick={() => setSecurityModal(true)}
-                style={{ display:"flex", alignItems:"center", gap:"6px", padding:"6px 10px", backgroundColor:darkMode?"rgba(16,185,129,0.1)":"#dcfce7", border:darkMode?"1px solid rgba(16,185,129,0.2)":"1px solid #86efac", borderRadius:"20px", fontSize:isMobile?"10px":"12px", fontWeight:"700", color:"#059669", whiteSpace:"nowrap", userSelect:"none" }}>
-                <span style={{ width:"6px", height:"6px", backgroundColor:"#10b981", borderRadius:"50%", flexShrink:0 }}/>
-                {isMobile?"SECURE":"SECURE ↗"}
-              </div>
-            )}
+            <div className="secure-btn" onClick={() => setSecurityModal(true)}
+              style={{ display:"flex", alignItems:"center", gap:"6px", padding:"6px 10px", backgroundColor:darkMode?"rgba(16,185,129,0.1)":"#dcfce7", border:darkMode?"1px solid rgba(16,185,129,0.2)":"1px solid #86efac", borderRadius:"20px", fontSize:isMobile?"10px":"12px", fontWeight:"700", color:"#059669", whiteSpace:"nowrap", userSelect:"none" }}>
+              <span style={{ width:"6px", height:"6px", backgroundColor:"#10b981", borderRadius:"50%", flexShrink:0 }}/>
+              {isMobile?"SECURE":"SECURE ↗"}
+            </div>
             <div style={{ position:"relative" }}>
               <button onClick={() => setMenuOpen(v => !v)} className={menuOpen?"ham-open":""} aria-label="Menu navigasi"
                 style={{ width:"42px", height:"42px", borderRadius:"12px", border:`1px solid ${menuOpen?"#2563eb":theme.border}`, backgroundColor:menuOpen?(darkMode?"rgba(37,99,235,0.15)":"#dbeafe"):theme.cardBg, cursor:"pointer", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"4px", transition:"all 0.25s ease", flexShrink:0 }}>
@@ -906,7 +885,7 @@ function App() {
                 <span className="hamburger-line" style={{ backgroundColor:menuOpen?"#2563eb":theme.text }}/>
               </button>
               {menuOpen && (
-                <div className="dropdown-menu" style={{ position:"absolute", top:"calc(100% + 12px)", right:0, width:"min(230px, 88vw)", backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"18px", overflow:"hidden", boxShadow:darkMode?"0 24px 48px rgba(0,0,0,0.5)":"0 24px 48px rgba(15,23,42,0.15)", zIndex:9999 }}>
+                <div className="dropdown-menu" style={{ position:"absolute", top:"calc(100% + 12px)", right:0, width:"230px", backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"18px", overflow:"hidden", boxShadow:darkMode?"0 24px 48px rgba(0,0,0,0.5)":"0 24px 48px rgba(15,23,42,0.15)", zIndex:9999 }}>
                   <div style={{ padding:"14px 16px 10px", borderBottom:`1px solid ${theme.border}`, display:"flex", alignItems:"center", gap:"8px" }}>
                     <div style={{ width:"28px", height:"28px", borderRadius:"8px", backgroundColor:"#2563eb", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -972,7 +951,7 @@ function App() {
 
               <div className="hero-content-col" style={{ display:"flex", flexDirection:"column", alignItems:isMobileOrTablet?"center":"flex-start" }}>
                 <h1 style={{ fontSize:heroNameFS, fontWeight:"900", color:theme.text, margin:"0 0 8px 0", letterSpacing:"-1px", lineHeight:1.1, textAlign:isMobileOrTablet?"center":"left" }}>M. Alif Ramadhan</h1>
-                <h3 style={{ fontSize:heroSubFS, fontWeight:"600", color:theme.subText, margin:"0 0 24px 0", display:"flex", alignItems:"center", minHeight:isMobile?"28px":"42px", flexWrap:"wrap", justifyContent:isMobileOrTablet?"center":"flex-start", textAlign:isMobileOrTablet?"center":"left" }}>
+                <h3 style={{ fontSize:heroSubFS, fontWeight:"600", color:theme.subText, margin:"0 0 24px 0", display:"flex", alignItems:"center", minHeight:isMobile?"28px":"42px", flexWrap:"wrap", justifyContent:isMobileOrTablet?"center":"flex-start" }}>
                   {heroTypedText}<span className="typing-cursor-lg"/>
                 </h3>
                 <div className="hero-badge-row" style={{ display:"flex", gap:"8px", alignItems:"center", marginBottom:"24px", flexWrap:"wrap", justifyContent:isMobileOrTablet?"center":"flex-start" }}>
@@ -983,22 +962,22 @@ function App() {
                 </div>
                 <a href="https://proyekpenjualan.infinityfreeapp.com/" target="_blank" rel="noreferrer"
                   className="hero-live-badge"
-                  style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"6px 12px", backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"8px", marginBottom:"24px", textDecoration:"none", transition:"border-color 0.2s, box-shadow 0.2s", maxWidth:"100%" }}
+                  style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"6px 12px", backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"8px", marginBottom:"24px", textDecoration:"none", transition:"border-color 0.2s, box-shadow 0.2s" }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor="#2563eb"; e.currentTarget.style.boxShadow="0 0 0 3px rgba(37,99,235,0.1)"; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor=theme.border; e.currentTarget.style.boxShadow="none"; }}>
                   <span style={{ width:"6px", height:"6px", backgroundColor:"#3b82f6", borderRadius:"50%", flexShrink:0 }}/>
                   <span style={{ fontSize:"11px", fontWeight:"700", color:"#3b82f6", textTransform:"uppercase" }}>Live Project</span>
                   <span style={{ color:"#cbd5e1" }}>|</span>
-                  <span style={{ fontSize:isMobile?"10px":"12px", color:theme.subText, fontWeight:"500", overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>Proyek Penjualan ↗</span>
+                  <span style={{ fontSize:isMobile?"10px":"12px", color:theme.subText, fontWeight:"500" }}>Proyek Penjualan ↗</span>
                 </a>
-                <p className="hero-desc-text" style={{ fontSize:isSmallPhone?"13px":isMobile?"14px":"15px", color:theme.subText, lineHeight:"1.7", margin:"0 0 32px 0", textAlign:"left", alignSelf:"auto", maxWidth:"100%" }}>
+                <p className="hero-desc-text" style={{ fontSize:isMobile?"14px":"15px", color:theme.subText, lineHeight:"1.7", margin:"0 0 32px 0", textAlign:"left", alignSelf:"auto", maxWidth:"100%" }}>
                   Halo, Saya Alif, mahasiswa IT yang fokus pada <strong style={{ color:theme.text }}>Backend Development</strong> dan arsitektur basis data. Aktif membangun solusi server-side dengan ekosistem <strong style={{ color:theme.text }}>Laravel</strong> serta mengoptimasi database relasional demi sistem yang efisien dan terintegrasi.
                 </p>
-                <div className="hero-stats-grid" style={{ display:"grid", gridTemplateColumns:heroStatCols, borderTop:`1px solid ${theme.border}`, paddingTop:"24px", marginBottom:"32px", width:"100%", rowGap:isSmallPhone?"16px":0 }}>
+                <div className="hero-stats-grid" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", borderTop:`1px solid ${theme.border}`, paddingTop:"24px", marginBottom:"32px", width:"100%" }}>
                   {[{num:"4+",label:"Years Learning"},{num:"4+",label:"Projects Done"},{num:"8+",label:"Tech Mastered"},{num:"∞",label:"Logic & Code"}].map((s, i) => (
-                    <div key={i} style={{ textAlign:isMobileOrTablet?"center":"left", padding:"16px 14px", borderRight: (isSmallPhone ? (i % 2 === 0) : i < 3) ? `1px solid ${theme.border}` : "none", paddingLeft: (i === 0 || (isSmallPhone && i === 2)) ? "0" : "14px" }}>
-                      <h3 className="hero-stat-num" style={{ margin:0, fontSize:isMobile?"18px":"28px", fontWeight:"800", color:theme.text }}>{s.num}</h3>
-                      <p className="hero-stat-label" style={{ margin:"4px 0 0 0", fontSize:"11px", color:"#64748b", fontWeight:"500" }}>{s.label}</p>
+                    <div key={i} style={{ textAlign:isMobileOrTablet?"center":"left", padding:"16px 14px", borderRight: i < 3 ? `1px solid ${theme.border}` : "none", paddingLeft: i === 0 ? "0" : "14px" }}>
+                      <h3 style={{ margin:0, fontSize:isMobile?"18px":"28px", fontWeight:"800", color:theme.text }}>{s.num}</h3>
+                      <p style={{ margin:"4px 0 0 0", fontSize:"11px", color:"#64748b", fontWeight:"500" }}>{s.label}</p>
                     </div>
                   ))}
                 </div>
@@ -1028,22 +1007,22 @@ function App() {
           {/* MANIFESTO */}
           <section style={{ padding:isMobile?"40px 24px 24px":"50px 40px 30px", textAlign:"center", maxWidth:"900px", margin:"0 auto", display:"flex", flexDirection:"column", alignItems:"center", gap:"14px" }}>
             <div className="scroll-animate" style={{ display:"inline-flex", alignItems:"center", gap:"6px", padding:"4px 14px", backgroundColor:theme.badgeBg, border:`1px solid ${darkMode?"rgba(99,102,241,0.2)":"#a5b4fc"}`, borderRadius:"100px", fontSize:"11px", fontFamily:"monospace", fontWeight:"600", color:theme.badgeText }}>personal manifesto</div>
-            <h2 className="manifesto-quote scroll-animate scroll-delay-1" style={{ fontSize:isSmallPhone?"17px":isMobile?"20px":"34px", fontWeight:"700", color:theme.text, lineHeight:"1.35", margin:"6px 0 2px 0", maxWidth:"750px" }}>
+            <h2 className="manifesto-quote scroll-animate scroll-delay-1" style={{ fontSize:isMobile?"20px":"34px", fontWeight:"700", color:theme.text, lineHeight:"1.35", margin:"6px 0 2px 0", maxWidth:"750px" }}>
               "Cara terbaik untuk memprediksi masa depan adalah dengan menciptakannya."
             </h2>
             <p className="scroll-animate scroll-delay-2" style={{ margin:0, fontSize:"14px", color:"#64748b", fontWeight:"600", fontFamily:"monospace" }}>— Alif</p>
           </section>
 
           {/* ORGANISASI */}
-          <section id="organisasi" style={{ padding:isSmallPhone?"36px 16px 48px":isMobile?"40px 20px 60px":isTablet?"40px 28px 60px":"40px 3% 70px", backgroundColor:darkMode?"transparent":theme.sectionAlt, borderTop:`1px solid ${theme.border}`, borderBottom:`1px solid ${theme.border}` }}>
+          <section id="organisasi" style={{ padding:isMobile?"40px 20px 60px":isTablet?"40px 28px 60px":"40px 3% 70px", backgroundColor:darkMode?"transparent":theme.sectionAlt, borderTop:`1px solid ${theme.border}`, borderBottom:`1px solid ${theme.border}` }}>
             <h2 className="scroll-animate section-heading" style={{ fontSize:isMobile?"20px":"26px", fontWeight:"800", textAlign:"center", color:theme.text, marginBottom:"32px" }}>Pengalaman Organisasi</h2>
             <div style={{ display:"grid", gridTemplateColumns:orgCols, gap:"20px", maxWidth:"1200px", margin:"0 auto" }}>
               {organisasiData.map((org, idx) => (
                 <div key={idx}
                   className={`scroll-animate scroll-delay-${Math.min(idx+1,4)}`}
                   onMouseEnter={() => setHoveredOrg(idx)} onMouseLeave={() => setHoveredOrg(null)}
-                  style={{ backgroundColor:theme.cardBg, border:`1px solid ${hoveredOrg===idx?"#2563eb":theme.border}`, borderRadius:"20px", padding:isSmallPhone?"28px 20px":"40px 28px", textAlign:"center", display:"flex", flexDirection:"column", alignItems:"center", transition:"all 0.3s cubic-bezier(0.4,0,0.2,1)", transform:hoveredOrg===idx?"translateY(-4px)":"translateY(0)", boxShadow:hoveredOrg===idx?"0 16px 36px rgba(37,99,235,0.1)":"0 4px 12px rgba(0,0,0,0.04)" }}>
-                  <div style={{ width:"80px", height:"80px", borderRadius:"50%", overflow:"hidden", marginBottom:"16px", border:`2px solid ${hoveredOrg===idx?"#2563eb":theme.border}`, backgroundColor:darkMode?"#0f172a":"#d8e6f2", flexShrink:0 }}>
+                  style={{ backgroundColor:theme.cardBg, border:`1px solid ${hoveredOrg===idx?"#2563eb":theme.border}`, borderRadius:"20px", padding:"40px 28px", textAlign:"center", display:"flex", flexDirection:"column", alignItems:"center", transition:"all 0.3s cubic-bezier(0.4,0,0.2,1)", transform:hoveredOrg===idx?"translateY(-4px)":"translateY(0)", boxShadow:hoveredOrg===idx?"0 16px 36px rgba(37,99,235,0.1)":"0 4px 12px rgba(0,0,0,0.04)" }}>
+                  <div style={{ width:"80px", height:"80px", borderRadius:"50%", overflow:"hidden", marginBottom:"16px", border:`2px solid ${hoveredOrg===idx?"#2563eb":theme.border}`, backgroundColor:darkMode?"#0f172a":"#d8e6f2" }}>
                     <img src={org.img} alt={org.jabatan} style={{ width:"100%", height:"100%", objectFit:"cover" }} />
                   </div>
                   <h3 style={{ fontSize:"15px", fontWeight:"700", color:theme.text, margin:"0 0 4px 0", lineHeight:"1.4" }}>{org.jabatan}<br/>{org.instansi}</h3>
@@ -1061,20 +1040,20 @@ function App() {
               <p style={{ color:"#64748b", margin:0, fontSize:"14px" }}>Komposisi teknologi yang saya gunakan untuk mewujudkan ide menjadi kenyataan.</p>
             </div>
             <div className="scroll-animate scroll-delay-1" style={{ display:"flex", justifyContent:"center", marginBottom:"28px" }}>
-              <div style={{ display:"flex", backgroundColor:darkMode?"#0f172a":"#dce6f2", padding:"4px", borderRadius:"10px", flexWrap:"wrap", justifyContent:"center", maxWidth:"100%" }}>
+              <div style={{ display:"flex", backgroundColor:darkMode?"#0f172a":"#dce6f2", padding:"4px", borderRadius:"10px" }}>
                 {[["backend","Laravel Backend Core"],["frontend","Frontend Integration"]].map(([key,label]) => (
                   <button key={key} onClick={() => setActiveTab(key)}
-                    style={{ padding:isSmallPhone?"7px 9px":isMobile?"7px 10px":"8px 14px", border:"none", borderRadius:"8px", fontSize:isSmallPhone?"10px":isMobile?"11px":"13px", fontWeight:"700", cursor:"pointer", transition:"all 0.2s ease", backgroundColor:activeTab===key?theme.cardBg:"transparent", color:activeTab===key?theme.text:"#64748b", boxShadow:activeTab===key?(darkMode?"0 2px 8px rgba(0,0,0,0.15)":"0 2px 8px rgba(0,0,0,0.08)"):"none", whiteSpace:"nowrap" }}>
+                    style={{ padding:isMobile?"7px 10px":"8px 14px", border:"none", borderRadius:"8px", fontSize:isMobile?"11px":"13px", fontWeight:"700", cursor:"pointer", transition:"all 0.2s ease", backgroundColor:activeTab===key?theme.cardBg:"transparent", color:activeTab===key?theme.text:"#64748b", boxShadow:activeTab===key?(darkMode?"0 2px 8px rgba(0,0,0,0.15)":"0 2px 8px rgba(0,0,0,0.08)"):"none" }}>
                     {label}
                   </button>
                 ))}
               </div>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:skillCols, gap:"16px", maxWidth:"1000px", margin:"0 auto" }}>
+            <div style={{ display:"grid", gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(4,1fr)", gap:"16px", maxWidth:"1000px", margin:"0 auto" }}>
               {techStack[activeTab].map((tech, i) => (
                 <div key={i} className={`scroll-animate scroll-delay-${Math.min(i+1,4)}`}
                   style={{ backgroundColor:darkMode?"#111827":"#f0f4f8", border:`1px solid ${theme.border}`, borderRadius:"14px", padding:"18px", display:"flex", flexDirection:"column", justifyContent:"space-between", minHeight:"80px" }}>
-                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", gap:"8px" }}>
+                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                     <span style={{ fontWeight:"700", fontSize:"14px", color:theme.text }}>{tech.name}</span>
                     <span style={{ width:"8px", height:"8px", borderRadius:"50%", backgroundColor:tech.color, flexShrink:0 }}/>
                   </div>
@@ -1093,7 +1072,7 @@ function App() {
               <h2 className="section-heading" style={{ fontSize:isMobile?"20px":"28px", fontWeight:"800", color:theme.text, margin:"0 0 8px 0" }}>My Projects</h2>
               <p style={{ color:"#64748b", margin:0, fontSize:"14px" }}>Kumpulan proyek yang telah saya kerjakan.</p>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:projCols, gap:"20px", maxWidth:"900px", margin:"0 auto" }}>
+            <div style={{ display:"grid", gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(2,1fr)", gap:"20px", maxWidth:"900px", margin:"0 auto" }}>
               {projectsData.map((proj, i) => (
                 <div key={i} className={`scroll-animate scroll-delay-${Math.min(i+1,4)}`}>
                   <ProjectCard proj={proj} theme={theme} darkMode={darkMode} isMobile={isMobile} isTablet={isTablet} />
@@ -1103,8 +1082,8 @@ function App() {
           </section>
 
           {/* TECH SCROLL */}
-          <section style={{ background: darkMode?"#1a2335":"#e0e8f4", padding:isSmallPhone?"32px 0 28px":"44px 0 36px", overflow:"hidden", borderTop:`1px solid ${darkMode?"rgba(255,255,255,0.06)":"#b8cce0"}`, borderBottom:`1px solid ${darkMode?"rgba(255,255,255,0.06)":"#b8cce0"}` }}>
-            <h2 className="scroll-animate" style={{ color: darkMode?"#fff":"#1e293b", textAlign:"center", fontWeight:"700", fontSize:isSmallPhone?"16px":isMobile?"18px":"22px", margin:"0 0 2rem", padding:"0 16px" }}>My Go-To Tech Stack</h2>
+          <section style={{ background: darkMode?"#1a2335":"#e0e8f4", padding:"44px 0 36px", overflow:"hidden", borderTop:`1px solid ${darkMode?"rgba(255,255,255,0.06)":"#b8cce0"}`, borderBottom:`1px solid ${darkMode?"rgba(255,255,255,0.06)":"#b8cce0"}` }}>
+            <h2 className="scroll-animate" style={{ color: darkMode?"#fff":"#1e293b", textAlign:"center", fontWeight:"700", fontSize:isMobile?"18px":"22px", margin:"0 0 2rem" }}>My Go-To Tech Stack</h2>
             <div style={{ position:"relative", overflow:"hidden" }}>
               <div className="ts-track">
                 {doubled.map((t, i) => (
@@ -1123,11 +1102,11 @@ function App() {
               <h2 className="section-heading" style={{ fontSize:isMobile?"20px":"28px", fontWeight:"800", color:theme.text, margin:"0 0 8px 0" }}>My Certificate</h2>
               <p style={{ color:"#64748b", margin:"0 auto", fontSize:"14px", maxWidth:"560px" }}>Kumpulan sertifikat standar keahlian dan kualifikasi teknis yang saya miliki.</p>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:certStatCols, gap:"16px", maxWidth:"800px", margin:"0 auto 36px" }}>
+            <div style={{ display:"grid", gridTemplateColumns:isMobile?"repeat(2,1fr)":"repeat(4,1fr)", gap:"16px", maxWidth:"800px", margin:"0 auto 36px" }}>
               {certStats.map((s, i) => (
                 <div key={i} className={`scroll-animate scroll-delay-${Math.min(i+1,4)}`}
-                  style={{ backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"14px", padding:isSmallPhone?"16px 10px":"20px 16px", textAlign:"center", boxShadow: darkMode?"none":"0 2px 8px rgba(0,0,0,0.06)" }}>
-                  <h3 style={{ margin:0, fontSize:isSmallPhone?"20px":"28px", fontWeight:"800", color:"#2563eb" }}>{s.num}</h3>
+                  style={{ backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"14px", padding:"20px 16px", textAlign:"center", boxShadow: darkMode?"none":"0 2px 8px rgba(0,0,0,0.06)" }}>
+                  <h3 style={{ margin:0, fontSize:"28px", fontWeight:"800", color:"#2563eb" }}>{s.num}</h3>
                   <p style={{ margin:"4px 0 0 0", fontSize:"11px", color:theme.subText, fontWeight:"600" }}>{s.label}</p>
                 </div>
               ))}
@@ -1140,7 +1119,7 @@ function App() {
                 </button>
               ))}
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:certCols, gap:"20px", maxWidth:"1200px", margin:"0 auto" }}>
+            <div style={{ display:"grid", gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(4,1fr)", gap:"20px", maxWidth:"1200px", margin:"0 auto" }}>
               {filteredCerts.map((cert, idx) => (
                 <div key={`${certFilter}-${idx}`} className="cert-card-anim scroll-animate" style={{ animationDelay:`${idx*60}ms` }}>
                   <CertCard cert={cert} theme={theme} darkMode={darkMode} isMobile={isMobile} isTablet={isTablet} />
@@ -1150,10 +1129,10 @@ function App() {
           </section>
 
           {/* CONTACT */}
-          <section id="contact" style={{ padding:isSmallPhone?"48px 20px":isMobile?"60px 28px":isTablet?"70px 48px":"80px 10%", backgroundColor:darkMode?"#1a2744":theme.sectionAlt, borderTop:`1px solid ${theme.border}`, display:"flex", flexDirection:isMobile?"column":"row", alignItems:isMobile?"flex-start":"center", justifyContent:"space-between", gap:"40px" }}>
+          <section id="contact" style={{ padding:isMobile?"60px 28px":isTablet?"70px 48px":"80px 10%", backgroundColor:darkMode?"#1a2744":theme.sectionAlt, borderTop:`1px solid ${theme.border}`, display:"flex", flexDirection:isMobile?"column":"row", alignItems:isMobile?"flex-start":"center", justifyContent:"space-between", gap:"40px" }}>
             <div style={{ flex:1, maxWidth:"560px" }}>
               <p style={{ margin:"0 0 12px 0", fontSize:"12px", fontWeight:"700", color:"#3074d2", letterSpacing:"1.5px", textTransform:"uppercase" }}>PUNYA PROJECT?</p>
-              <h2 style={{ fontSize:isSmallPhone?"24px":isMobile?"28px":isTablet?"34px":"42px", fontWeight:"700", color:theme.text, margin:"0 0 18px 0", letterSpacing:"-1px", lineHeight:1.1, textAlign:"left" }}>Tertarik untuk berkolaborasi!</h2>
+              <h2 style={{ fontSize:isMobile?"28px":isTablet?"34px":"42px", fontWeight:"700", color:theme.text, margin:"0 0 18px 0", letterSpacing:"-1px", lineHeight:1.1, textAlign:"left" }}>Tertarik untuk berkolaborasi!</h2>
               <p style={{ color:"#64748b", margin:"0 0 36px 0", fontSize:"15px", lineHeight:"1.75", maxWidth:"420px", textAlign:"left" }}>Saya selalu terbuka untuk peluang baru, kolaborasi menarik, atau hanya ingin berdiskusi tentang teknologi dan pengembangan. Klik tombol di bawah untuk mengirim email langsung!</p>
               <a href="mailto:muhammadaliframadhanramadhan@gmail.com"
                 style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"13px 28px", backgroundColor:"#3074d2", color:"#fff", border:"none", borderRadius:"12px", fontSize:"14px", fontWeight:"700", textDecoration:"none", cursor:"pointer", boxShadow:"0 4px 20px rgba(35,118,206,0.48)", transition:"all 0.2s ease" }}
@@ -1167,8 +1146,8 @@ function App() {
           </section>
 
           {/* FOOTER */}
-          <footer style={{ padding:isSmallPhone?"14px 16px":isMobile?"16px 20px":"18px 10%", backgroundColor:theme.cardBg, borderTop:`1px solid ${theme.border}`, display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:"8px", userSelect:"none", WebkitUserSelect:"none" }}>
-            <span style={{ fontSize:isSmallPhone?"11px":"13px", color:darkMode?"#94a3b8":"#64748b", fontWeight:"500" }}>© 2026 M. Alif Ramadhan. Dibuat dengan <span style={{ color:darkMode?"#a78bfa":"#7c3aed", fontWeight:"700" }}>☕</span> dan <span style={{ color:"#2563eb", fontWeight:"700" }}>&lt;/&gt;</span>.</span>
+          <footer style={{ padding:isMobile?"16px 20px":"18px 10%", backgroundColor:theme.cardBg, borderTop:`1px solid ${theme.border}`, display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:"8px", userSelect:"none", WebkitUserSelect:"none" }}>
+            <span style={{ fontSize:"13px", color:darkMode?"#94a3b8":"#64748b", fontWeight:"500" }}>© 2026 M. Alif Ramadhan. Dibuat dengan <span style={{ color:darkMode?"#a78bfa":"#7c3aed", fontWeight:"700" }}>☕</span> dan <span style={{ color:"#2563eb", fontWeight:"700" }}>&lt;/&gt;</span>.</span>
             <LiveClock />
           </footer>
         </div>

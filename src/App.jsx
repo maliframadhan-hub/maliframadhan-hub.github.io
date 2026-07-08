@@ -328,7 +328,7 @@ function SecurityModal({ onClose }) {
 }
 
 // ─────────────────────────────────────────────
-// PROJECT CARD — FIXED MOBILE THUMBNAIL
+// PROJECT CARD
 // ─────────────────────────────────────────────
 function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
   const [hovered, setHovered]   = useState(false);
@@ -336,10 +336,9 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
 
   const hasThumbnail = proj.img && !imgError;
   const hasLink      = proj.link && proj.link !== "#";
-  const isWebsite    = proj.type === "website";
+  const isWebsite    = proj.type === "website" || proj.type === "website application";
 
-  // ✅ FIX: Tinggi thumbnail lebih besar di mobile agar konten tidak terpotong
-  const thumbHeight = isMobile ? "260px" : isTablet ? "220px" : "185px";
+  const thumbHeight = isMobile ? "220px" : isTablet ? "200px" : "175px";
 
   return (
     <div
@@ -352,6 +351,7 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
+        height: "100%",
         transition: "all 0.3s cubic-bezier(0.4,0,0.2,1)",
         transform: hovered ? "translateY(-6px)" : "translateY(0)",
         boxShadow: hovered ? "0 24px 48px rgba(37,99,235,0.14)" : "0 2px 8px rgba(0,0,0,0.04)",
@@ -362,7 +362,6 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
     >
       <div style={{ height:"3px", background: hovered ? "linear-gradient(90deg,#2563eb,#60a5fa)" : "transparent", transition:"background 0.3s ease" }} />
 
-      {/* ✅ FIX: Thumbnail dengan aspect-ratio konsisten, tidak crop di mobile */}
       <div style={{
         width: "100%",
         height: thumbHeight,
@@ -380,7 +379,6 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              // ✅ FIX: objectPosition "top center" agar bagian atas gambar selalu terlihat
               objectPosition: "top center",
               display: "block",
               transition: "transform 0.4s ease",
@@ -468,7 +466,6 @@ function CertCard({ cert, theme, darkMode, isMobile, isTablet }) {
   const hasThumbnail = cert.img && !imgError;
   const hasLink      = cert.link && cert.link !== "#";
 
-  // ✅ FIX: Tinggi thumbnail sertifikat lebih besar di mobile
   const thumbHeight = isMobile ? "230px" : isTablet ? "200px" : "165px";
 
   return (
@@ -482,6 +479,7 @@ function CertCard({ cert, theme, darkMode, isMobile, isTablet }) {
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
+        height: "100%",
         transition: "all 0.3s cubic-bezier(0.4,0,0.2,1)",
         transform: hovered ? "translateY(-5px)" : "translateY(0)",
         boxShadow: hovered ? "0 20px 40px rgba(37,99,235,0.12)" : "0 2px 8px rgba(0,0,0,0.04)",
@@ -495,7 +493,6 @@ function CertCard({ cert, theme, darkMode, isMobile, isTablet }) {
             style={{
               width:"100%", height:"100%",
               objectFit:"cover",
-              // ✅ FIX: top center agar tidak crop bagian penting
               objectPosition:"top center",
               display:"block",
             }} />
@@ -565,7 +562,6 @@ function scrollTo(id) {
 // APP
 // ─────────────────────────────────────────────
 function App() {
-  // ✅ LOADING SCREEN STATE
   const [appLoaded, setAppLoaded]         = useState(false);
   const handleLoadFinish                  = useCallback(() => setAppLoaded(true), []);
 
@@ -593,8 +589,10 @@ function App() {
   const triggerWarning = (reason) => setWarning({ show:true, reason });
 
   useEffect(() => {
-    const GRACE = 3000;
+    // ✅ FIX: grace period lebih panjang supaya warning tidak muncul begitu halaman dibuka
+    const GRACE = 8000;
     let ready = false;
+    let devtoolsStrikes = 0;
     const gracePeriod = setTimeout(() => { ready = true; }, GRACE);
     const onContextMenu = (e) => { if (!ready) return; e.preventDefault(); triggerWarning("rightclick"); };
     const onKeyDown = (e) => {
@@ -607,16 +605,31 @@ function App() {
       if (ctrl && ["c","a","s","p"].includes(key)) { e.preventDefault(); triggerWarning("copy"); return; }
     };
     const onDragStart = (e) => { if (!ready) return; e.preventDefault(); triggerWarning("copy"); };
+    // ✅ FIX: deteksi devtools hanya di layar desktop (>=1024px) — pada mobile/tablet,
+    // perbedaan outerWidth/innerWidth sering muncul karena address bar / toolbar sehingga
+    // memicu warning palsu saat halaman baru dibuka.
     const detectDevTools = () => {
       if (!ready) return;
+      if (window.innerWidth < 1024) return;
       const widthDiff = window.outerWidth - window.innerWidth;
       const heightDiff = window.outerHeight - window.innerHeight;
-      if ((widthDiff > 160 || heightDiff > 160) && !devtoolsRef.current) { devtoolsRef.current = true; triggerWarning("devtools"); }
-      else if (widthDiff <= 160 && heightDiff <= 160) { devtoolsRef.current = false; }
+      const suspicious = widthDiff > 200 || heightDiff > 200;
+      if (suspicious) {
+        devtoolsStrikes++;
+        // ✅ FIX: butuh beberapa kali deteksi berturut-turut sebelum menampilkan warning,
+        // supaya tidak mudah salah deteksi (mis. saat resize sekali).
+        if (devtoolsStrikes >= 3 && !devtoolsRef.current) {
+          devtoolsRef.current = true;
+          triggerWarning("devtools");
+        }
+      } else {
+        devtoolsStrikes = 0;
+        devtoolsRef.current = false;
+      }
     };
     const devtoolsTimeout = setTimeout(() => {
-      devtoolsRef._interval = setInterval(detectDevTools, 1500);
-    }, GRACE + 500);
+      devtoolsRef._interval = setInterval(detectDevTools, 2000);
+    }, GRACE + 1000);
     document.addEventListener("contextmenu", onContextMenu);
     document.addEventListener("keydown", onKeyDown);
     document.addEventListener("dragstart", onDragStart);
@@ -724,7 +737,7 @@ function App() {
     { title:"Proyek Penjualan", desc:"Sistem informasi untuk mengelola penjualan produk secara efisien dan efektif.", tech:["React Client","PHP","MySQL"], type:"website", link:"https://proyekpenjualan.infinityfreeapp.com/", img:"proyekpenjualan.jpeg" },
     { title:"Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Pandas","Matplotlib","Streamlit","Python"], type:"project", link:"https://9wowf62gvi4vvjyr2d23st.streamlit.app/", img:"streamlit.png" },
     { title:"Project Ucapan Ulang Tahun", desc:"Sistem web interaktif untuk menampilkan ucapan ulang tahun dengan animasi, gambar, dan musik secara personal.", tech:["HTML","CSS","JavaScript"], type:"project", link:"https://happy-birthday-nayla.vercel.app/", img:"webnayla.png" },
-    { title:"RECYNT AI - WASTE DETECTION SYSTEM", desc:"Aplikasi berbasis AI untuk mendeteksi jenis sampah, memberikan informasi daur ulang, serta membantu pengelolaan limbah secara cerdas dan ramah lingkungan.", tech:["HTML","CSS","JavaScript","Node.js","YoLov8","Python","FastAPI","MySQL"], type:"website application", link:"https://recynt-ai.vercel.app/", img:"recyntai.png" },  
+    { title:"RECYNT AI - Waste Detection System", desc:"Aplikasi berbasis AI untuk mendeteksi jenis sampah, memberikan informasi daur ulang, serta membantu pengelolaan limbah secara cerdas dan ramah lingkungan.", tech:["HTML","CSS","JavaScript","Node.js","YOLOv8","Python","FastAPI","MySQL"], type:"website application", link:"https://recynt-ai.vercel.app/", img:"recyntai.png" },
   ];
 
   const navLinks = ["Profile","Organisasi","Skill","Projects","Sertifikat","Contact"];
@@ -756,7 +769,32 @@ function App() {
   const sectionPad = isMobile ? "40px 20px" : isTablet ? "60px 32px" : "80px 10%";
   const navPad     = isMobile ? "14px 20px" : "18px 10%";
   const orgCols    = isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)";
-  const btn        = { textDecoration:"none", padding:isMobile?"9px 14px":"10px 20px", fontSize:"13px", fontWeight:"700", borderRadius:"8px", cursor:"pointer", display:"inline-flex", alignItems:"center", justifyContent:"center", transition:"all 0.2s ease", whiteSpace:"nowrap" };
+
+  // ─── Konsisten grid untuk section Projects: 1 / 2 / 3 kolom ───
+  const projectCols = isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)";
+  const projectMaxWidth = isMobile ? "520px" : isTablet ? "820px" : "1200px";
+
+  // ─── Tombol seragam (ukuran, radius, weight) di semua device ───
+  const btn = {
+    textDecoration: "none",
+    padding: isMobile ? "11px 16px" : "11px 20px",
+    fontSize: "13px",
+    fontWeight: "700",
+    borderRadius: "10px",
+    cursor: "pointer",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "6px",
+    lineHeight: 1,
+    transition: "all 0.2s ease",
+    whiteSpace: "nowrap",
+  };
+  const btnRow = {
+    display: "flex",
+    gap: "10px",
+    flexWrap: "wrap",
+  };
 
   return (
     <>
@@ -806,6 +844,7 @@ function App() {
           .scroll-animate-right.scroll-visible { opacity:1; transform:translateX(0); }
           .scroll-delay-1{transition-delay:.1s} .scroll-delay-2{transition-delay:.2s}
           .scroll-delay-3{transition-delay:.3s} .scroll-delay-4{transition-delay:.4s}
+          .scroll-delay-5{transition-delay:.5s} .scroll-delay-6{transition-delay:.6s}
 
           html { scroll-behavior:smooth; }
           .ts-track { display:flex; gap:52px; align-items:center; width:max-content; animation:scrollLeft 28s linear infinite; }
@@ -815,6 +854,23 @@ function App() {
           .ts-item:hover .ts-icon { opacity:1; transform:scale(1.12) translateY(-4px); }
           .ts-label { font-size:12px; font-weight:500; white-space:nowrap; transition:color 0.2s; }
           .ts-item:hover .ts-label { color:#e2e8f0 !important; }
+
+          /* ─── Tombol & toggle: state konsisten di semua ukuran layar ─── */
+          .btn-hover:hover { filter:brightness(1.08); transform:translateY(-1px); }
+          .btn-hover:active { transform:translateY(0); filter:brightness(0.96); }
+          .icon-toggle-btn {
+            display:flex; align-items:center; justify-content:center;
+            border-radius:50%; cursor:pointer; flex-shrink:0;
+            transition:transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+          }
+          .icon-toggle-btn:hover { transform:scale(1.06); }
+          .icon-toggle-btn:active { transform:scale(0.96); }
+          .pill-toggle-btn {
+            border:none; cursor:pointer; transition:all 0.2s ease;
+            display:inline-flex; align-items:center; justify-content:center;
+          }
+          .pill-toggle-btn:active { transform:scale(0.97); }
+
           .hamburger-line { display:block; width:18px; height:2px; border-radius:2px; transition:all 0.3s cubic-bezier(0.4,0,0.2,1); }
           .ham-open .hamburger-line:nth-child(1){ transform:translateY(6px) rotate(45deg); }
           .ham-open .hamburger-line:nth-child(2){ opacity:0; transform:scaleX(0); }
@@ -847,6 +903,7 @@ function App() {
           @media (max-width:767px) {
             .manifesto-quote { font-size:18px !important; }
             .section-heading { font-size:20px !important; }
+            .hero-btn-row .btn-hover { flex:1 1 calc(50% - 5px); }
           }
         `}</style>
 
@@ -863,23 +920,22 @@ function App() {
             </h2>
           </div>
           <div style={{ display:"flex", alignItems:"center", gap:"8px", flexShrink:0 }} ref={menuRef}>
-            <button onClick={() => setDarkMode(!darkMode)}
-              style={{ background:"none", border:`1px solid ${theme.border}`, backgroundColor:theme.cardBg, borderRadius:"50%", width:"38px", height:"38px", minWidth:"38px", display:"flex", justifyContent:"center", alignItems:"center", cursor:"pointer", transition:"transform 0.2s ease" }}
-              onMouseEnter={e => e.currentTarget.style.transform="scale(1.06) rotate(15deg)"}
-              onMouseLeave={e => e.currentTarget.style.transform="scale(1) rotate(0deg)"}>
+            <button onClick={() => setDarkMode(!darkMode)} aria-label="Ganti tema"
+              className="icon-toggle-btn"
+              style={{ background:theme.cardBg, border:`1px solid ${theme.border}`, width:"38px", height:"38px", minWidth:"38px" }}>
               {darkMode
                 ? <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 : <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
               }
             </button>
             <div className="secure-btn" onClick={() => setSecurityModal(true)}
-              style={{ display:"flex", alignItems:"center", gap:"6px", padding:"6px 10px", backgroundColor:darkMode?"rgba(16,185,129,0.1)":"#dcfce7", border:darkMode?"1px solid rgba(16,185,129,0.2)":"1px solid #86efac", borderRadius:"20px", fontSize:isMobile?"10px":"12px", fontWeight:"700", color:"#059669", whiteSpace:"nowrap", userSelect:"none" }}>
+              style={{ display:"flex", alignItems:"center", gap:"6px", height:"38px", padding:"0 12px", backgroundColor:darkMode?"rgba(16,185,129,0.1)":"#dcfce7", border:darkMode?"1px solid rgba(16,185,129,0.2)":"1px solid #86efac", borderRadius:"20px", fontSize:isMobile?"10px":"12px", fontWeight:"700", color:"#059669", whiteSpace:"nowrap", userSelect:"none" }}>
               <span style={{ width:"6px", height:"6px", backgroundColor:"#10b981", borderRadius:"50%", flexShrink:0 }}/>
               {isMobile?"SECURE":"SECURE ↗"}
             </div>
             <div style={{ position:"relative" }}>
-              <button onClick={() => setMenuOpen(v => !v)} className={menuOpen?"ham-open":""} aria-label="Menu navigasi"
-                style={{ width:"42px", height:"42px", borderRadius:"12px", border:`1px solid ${menuOpen?"#2563eb":theme.border}`, backgroundColor:menuOpen?(darkMode?"rgba(37,99,235,0.15)":"#dbeafe"):theme.cardBg, cursor:"pointer", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"4px", transition:"all 0.25s ease", flexShrink:0 }}>
+              <button onClick={() => setMenuOpen(v => !v)} className={`icon-toggle-btn ${menuOpen?"ham-open":""}`} aria-label="Menu navigasi"
+                style={{ width:"42px", height:"42px", borderRadius:"12px", border:`1px solid ${menuOpen?"#2563eb":theme.border}`, backgroundColor:menuOpen?(darkMode?"rgba(37,99,235,0.15)":"#dbeafe"):theme.cardBg, flexDirection:"column", gap:"4px" }}>
                 <span className="hamburger-line" style={{ backgroundColor:menuOpen?"#2563eb":theme.text }}/>
                 <span className="hamburger-line" style={{ backgroundColor:menuOpen?"#2563eb":theme.text, width:"14px" }}/>
                 <span className="hamburger-line" style={{ backgroundColor:menuOpen?"#2563eb":theme.text }}/>
@@ -981,22 +1037,20 @@ function App() {
                     </div>
                   ))}
                 </div>
-                <div className="hero-btn-row" style={{ display:"flex", gap:"8px", flexWrap:"wrap", justifyContent:isMobileOrTablet?"center":"flex-start" }}>
-                  <a href="https://www.instagram.com/alifframadhnn_?igsh=MnNmbG9qaWk4Mzhs" target="_blank" rel="noreferrer" style={{ ...btn, backgroundColor:"#2563eb", color:"#fff", border:"none" }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight:"6px" }}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                <div className="hero-btn-row" style={{ ...btnRow, justifyContent:isMobileOrTablet?"center":"flex-start" }}>
+                  <a href="https://www.instagram.com/alifframadhnn_?igsh=MnNmbG9qaWk4Mzhs" target="_blank" rel="noreferrer" className="btn-hover" style={{ ...btn, backgroundColor:"#2563eb", color:"#fff", border:"1px solid #2563eb" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     Instagram
                   </a>
-                  <a href="https://www.linkedin.com/in/m-alif-ramadhan" target="_blank" rel="noreferrer" style={{ ...btn, backgroundColor:"#0077b5", color:"#fff", border:"none" }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight:"6px" }}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <a href="https://www.linkedin.com/in/m-alif-ramadhan" target="_blank" rel="noreferrer" className="btn-hover" style={{ ...btn, backgroundColor:"#0077b5", color:"#fff", border:"1px solid #0077b5" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     LinkedIn
                   </a>
-                  <a href="/CV_M_ALIF_RAMADHAN.pdf" download style={{ ...btn, backgroundColor:theme.cardBg, color:theme.text, border:`1px solid ${theme.border}` }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight:"6px" }}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <a href="/CV_M_ALIF_RAMADHAN.pdf" download className="btn-hover" style={{ ...btn, backgroundColor:theme.cardBg, color:theme.text, border:`1px solid ${theme.border}` }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Download CV
                   </a>
-                  <a href="#projects" onClick={(e)=>{e.preventDefault();scrollTo("projects");}} style={{ ...btn, backgroundColor:"transparent", color:"#2563eb", border:"1px solid #2563eb" }}
-                    onMouseEnter={e => e.currentTarget.style.backgroundColor=darkMode?"rgba(37,99,235,0.1)":"#dbeafe"}
-                    onMouseLeave={e => e.currentTarget.style.backgroundColor="transparent"}>
+                  <a href="#projects" onClick={(e)=>{e.preventDefault();scrollTo("projects");}} className="btn-hover" style={{ ...btn, backgroundColor:darkMode?"rgba(37,99,235,0.1)":"#dbeafe", color:"#2563eb", border:"1px solid #2563eb" }}>
                     View Projects
                   </a>
                 </div>
@@ -1040,10 +1094,10 @@ function App() {
               <p style={{ color:"#64748b", margin:0, fontSize:"14px" }}>Komposisi teknologi yang saya gunakan untuk mewujudkan ide menjadi kenyataan.</p>
             </div>
             <div className="scroll-animate scroll-delay-1" style={{ display:"flex", justifyContent:"center", marginBottom:"28px" }}>
-              <div style={{ display:"flex", backgroundColor:darkMode?"#0f172a":"#dce6f2", padding:"4px", borderRadius:"10px" }}>
+              <div style={{ display:"flex", backgroundColor:darkMode?"#0f172a":"#dce6f2", padding:"4px", borderRadius:"12px", gap:"4px" }}>
                 {[["backend","Laravel Backend Core"],["frontend","Frontend Integration"]].map(([key,label]) => (
-                  <button key={key} onClick={() => setActiveTab(key)}
-                    style={{ padding:isMobile?"7px 10px":"8px 14px", border:"none", borderRadius:"8px", fontSize:isMobile?"11px":"13px", fontWeight:"700", cursor:"pointer", transition:"all 0.2s ease", backgroundColor:activeTab===key?theme.cardBg:"transparent", color:activeTab===key?theme.text:"#64748b", boxShadow:activeTab===key?(darkMode?"0 2px 8px rgba(0,0,0,0.15)":"0 2px 8px rgba(0,0,0,0.08)"):"none" }}>
+                  <button key={key} onClick={() => setActiveTab(key)} className="pill-toggle-btn"
+                    style={{ padding:isMobile?"9px 12px":"10px 18px", borderRadius:"9px", fontSize:isMobile?"11px":"13px", fontWeight:"700", backgroundColor:activeTab===key?theme.cardBg:"transparent", color:activeTab===key?theme.text:"#64748b", boxShadow:activeTab===key?(darkMode?"0 2px 8px rgba(0,0,0,0.15)":"0 2px 8px rgba(0,0,0,0.08)"):"none" }}>
                     {label}
                   </button>
                 ))}
@@ -1072,9 +1126,9 @@ function App() {
               <h2 className="section-heading" style={{ fontSize:isMobile?"20px":"28px", fontWeight:"800", color:theme.text, margin:"0 0 8px 0" }}>My Projects</h2>
               <p style={{ color:"#64748b", margin:0, fontSize:"14px" }}>Kumpulan proyek yang telah saya kerjakan.</p>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(2,1fr)", gap:"20px", maxWidth:"900px", margin:"0 auto" }}>
+            <div style={{ display:"grid", gridTemplateColumns:projectCols, gap:"20px", maxWidth:projectMaxWidth, margin:"0 auto" }}>
               {projectsData.map((proj, i) => (
-                <div key={i} className={`scroll-animate scroll-delay-${Math.min(i+1,4)}`}>
+                <div key={i} className={`scroll-animate scroll-delay-${Math.min(i+1,6)}`}>
                   <ProjectCard proj={proj} theme={theme} darkMode={darkMode} isMobile={isMobile} isTablet={isTablet} />
                 </div>
               ))}
@@ -1113,8 +1167,8 @@ function App() {
             </div>
             <div className="scroll-animate" style={{ display:"flex", justifyContent:"center", marginBottom:"32px", flexWrap:"wrap", gap:"8px", padding:"0 16px" }}>
               {certCategories.map(cat => (
-                <button key={cat} onClick={() => setCertFilter(cat)}
-                  style={{ padding:"6px 16px", border:`1px solid ${certFilter===cat?"#2563eb":theme.border}`, borderRadius:"20px", fontSize:"12px", fontWeight:"700", cursor:"pointer", backgroundColor:certFilter===cat?"#2563eb":theme.cardBg, color:certFilter===cat?"#fff":theme.subText, transition:"all 0.2s ease" }}>
+                <button key={cat} onClick={() => setCertFilter(cat)} className="pill-toggle-btn"
+                  style={{ padding:"8px 18px", border:`1px solid ${certFilter===cat?"#2563eb":theme.border}`, borderRadius:"20px", fontSize:"12px", fontWeight:"700", backgroundColor:certFilter===cat?"#2563eb":theme.cardBg, color:certFilter===cat?"#fff":theme.subText }}>
                   {cat}{cat==="Semua" && <span style={{ marginLeft:"6px", fontSize:"10px", backgroundColor:certFilter===cat?"rgba(255,255,255,0.25)":"rgba(37,99,235,0.1)", color:certFilter===cat?"#fff":"#2563eb", padding:"1px 5px", borderRadius:"10px" }}>{sertifikatData.length}</span>}
                 </button>
               ))}
@@ -1134,10 +1188,8 @@ function App() {
               <p style={{ margin:"0 0 12px 0", fontSize:"12px", fontWeight:"700", color:"#3074d2", letterSpacing:"1.5px", textTransform:"uppercase" }}>PUNYA PROJECT?</p>
               <h2 style={{ fontSize:isMobile?"28px":isTablet?"34px":"42px", fontWeight:"700", color:theme.text, margin:"0 0 18px 0", letterSpacing:"-1px", lineHeight:1.1, textAlign:"left" }}>Tertarik untuk berkolaborasi!</h2>
               <p style={{ color:"#64748b", margin:"0 0 36px 0", fontSize:"15px", lineHeight:"1.75", maxWidth:"420px", textAlign:"left" }}>Saya selalu terbuka untuk peluang baru, kolaborasi menarik, atau hanya ingin berdiskusi tentang teknologi dan pengembangan. Klik tombol di bawah untuk mengirim email langsung!</p>
-              <a href="mailto:muhammadaliframadhanramadhan@gmail.com"
-                style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"13px 28px", backgroundColor:"#3074d2", color:"#fff", border:"none", borderRadius:"12px", fontSize:"14px", fontWeight:"700", textDecoration:"none", cursor:"pointer", boxShadow:"0 4px 20px rgba(35,118,206,0.48)", transition:"all 0.2s ease" }}
-                onMouseEnter={e => { e.currentTarget.style.backgroundColor="#0ea5e9"; e.currentTarget.style.transform="translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.backgroundColor="#3074d2"; e.currentTarget.style.transform="translateY(0)"; }}>
+              <a href="mailto:muhammadaliframadhanramadhan@gmail.com" className="btn-hover"
+                style={{ ...btn, padding:"13px 28px", fontSize:"14px", backgroundColor:"#3074d2", color:"#fff", border:"1px solid #3074d2", boxShadow:"0 4px 20px rgba(35,118,206,0.48)" }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 Kirim Email
               </a>

@@ -892,7 +892,14 @@ function App() {
             .photo-inner { border-radius:50% !important; height:180px !important; min-height:180px !important; }
             .photo-inner img { object-fit:cover !important; height:180px !important; width:180px !important; border-radius:50% !important; }
             .photo-caption { display:none !important; }
-            .hero-desc-text { text-align:left !important; align-self:flex-start !important; }
+            .hero-desc-text {
+              text-align:justify !important;
+              text-align-last:left !important;
+              hyphens:auto !important;
+              -webkit-hyphens:auto !important;
+              word-spacing:-0.5px !important;
+              align-self:flex-start !important;
+            }
             .hero-badge-row { justify-content:center !important; }
             .hero-btn-row   { justify-content:center !important; }
             .hero-live-badge { margin:0 auto 24px !important; }
@@ -1026,7 +1033,7 @@ function App() {
                   <span style={{ color:"#cbd5e1" }}>|</span>
                   <span style={{ fontSize:isMobile?"10px":"12px", color:theme.subText, fontWeight:"500" }}>RECYNT AI ↗</span>
                 </a>
-                <p className="hero-desc-text" style={{ fontSize:isMobile?"14px":"15px", color:theme.subText, lineHeight:"1.7", margin:"0 0 32px 0", textAlign:"left", alignSelf:"auto", maxWidth:"100%" }}>
+                <p className="hero-desc-text" style={{ fontSize:isMobile?"14px":"15px", color:theme.subText, lineHeight:"1.7", margin:"0 0 32px 0", textAlign:"justify", textAlignLast:"left", hyphens:"auto", WebkitHyphens:"auto", wordSpacing:"-0.5px", alignSelf:"auto", maxWidth:"100%" }}>
                   Halo, Saya Alif, mahasiswa program Diploma <strong style={{ color:theme.text }}>Teknik Komputer</strong> di <strong style={{ color:theme.text }}>Politeknik Negeri Medan</strong> yang memiliki minat besar dalam pengembangan <strong style={{ color:theme.text }}>perangkat lunak</strong>, <strong style={{ color:theme.text }}>pengembangan web</strong>, dan <strong style={{ color:theme.text }}>kecerdasan buatan (Artificial Intelligence)</strong>. Saya senang mempelajari dan menerapkan teknologi untuk menciptakan solusi inovatif yang bermanfaat bagi masyarakat.
                 </p>
                 <div className="hero-stats-grid" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", borderTop:`1px solid ${theme.border}`, paddingTop:"24px", marginBottom:"32px", width:"100%" }}>

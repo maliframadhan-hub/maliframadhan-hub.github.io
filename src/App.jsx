@@ -1027,7 +1027,7 @@ function App() {
                   <span style={{ fontSize:isMobile?"10px":"12px", color:theme.subText, fontWeight:"500" }}>Proyek Penjualan ↗</span>
                 </a>
                 <p className="hero-desc-text" style={{ fontSize:isMobile?"14px":"15px", color:theme.subText, lineHeight:"1.7", margin:"0 0 32px 0", textAlign:"left", alignSelf:"auto", maxWidth:"100%" }}>
-                  Halo, Saya Alif, mahasiswa IT yang fokus pada <strong style={{ color:theme.text }}>Backend Development</strong> dan arsitektur basis data. Aktif membangun solusi server-side dengan ekosistem <strong style={{ color:theme.text }}>Laravel</strong> serta mengoptimasi database relasional demi sistem yang efisien dan terintegrasi.
+                  Halo, Saya Alif, mahasiswa program Diploma <strong style={{ color:theme.text }}>Teknik Komputer</strong> di <strong style={{ color:theme.text }}>Politeknik Negeri Medan</strong> yang memiliki minat besar dalam pengembangan <strong style={{ color:theme.text }}>perangkat lunak</strong>, <strong style={{ color:theme.text }}>pengembangan web</strong>, dan <strong style={{ color:theme.text }}>kecerdasan buatan (Artificial Intelligence)</strong>. Saya senang mempelajari dan menerapkan teknologi untuk menciptakan solusi inovatif yang bermanfaat bagi masyarakat.
                 </p>
                 <div className="hero-stats-grid" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", borderTop:`1px solid ${theme.border}`, paddingTop:"24px", marginBottom:"32px", width:"100%" }}>
                   {[{num:"4+",label:"Years Learning"},{num:"4+",label:"Projects Done"},{num:"8+",label:"Tech Mastered"},{num:"∞",label:"Logic & Code"}].map((s, i) => (

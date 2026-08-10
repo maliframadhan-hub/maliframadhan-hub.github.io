@@ -1014,9 +1014,9 @@ function App() {
                   <span style={{ color:"#3b82f6", fontSize:"13px", fontWeight:"700" }}>&gt; Core Competency of</span>
                   <span style={{ fontSize:"12px", fontWeight:"600", color:darkMode?"#38bdf8":"#0369a1", backgroundColor:darkMode?"rgba(56,189,248,0.15)":"#bfdbfe", padding:"3px 10px", borderRadius:"6px" }}>Software Engineering</span>
                   <span style={{ color:"#64748b" }}>&</span>
-                  <span style={{ fontSize:"12px", fontWeight:"600", color:darkMode?"#4ade80":"#166534", backgroundColor:darkMode?"rgba(74,222,128,0.15)":"#bbf7d0", padding:"3px 10px", borderRadius:"6px" }}>Database Systems</span>
+                  <span style={{ fontSize:"12px", fontWeight:"600", color:darkMode?"#4ade80":"#166534", backgroundColor:darkMode?"rgba(74,222,128,0.15)":"#bbf7d0", padding:"3px 10px", borderRadius:"6px" }}>Development Operations</span>
                 </div>
-                <a href="https://proyekpenjualan.infinityfreeapp.com/" target="_blank" rel="noreferrer"
+                <a href="https://recynt-ai.vercel.app/" target="_blank" rel="noreferrer"
                   className="hero-live-badge"
                   style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"6px 12px", backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"8px", marginBottom:"24px", textDecoration:"none", transition:"border-color 0.2s, box-shadow 0.2s" }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor="#2563eb"; e.currentTarget.style.boxShadow="0 0 0 3px rgba(37,99,235,0.1)"; }}
@@ -1024,7 +1024,7 @@ function App() {
                   <span style={{ width:"6px", height:"6px", backgroundColor:"#3b82f6", borderRadius:"50%", flexShrink:0 }}/>
                   <span style={{ fontSize:"11px", fontWeight:"700", color:"#3b82f6", textTransform:"uppercase" }}>Live Project</span>
                   <span style={{ color:"#cbd5e1" }}>|</span>
-                  <span style={{ fontSize:isMobile?"10px":"12px", color:theme.subText, fontWeight:"500" }}>Proyek Penjualan ↗</span>
+                  <span style={{ fontSize:isMobile?"10px":"12px", color:theme.subText, fontWeight:"500" }}>RECYNT AI ↗</span>
                 </a>
                 <p className="hero-desc-text" style={{ fontSize:isMobile?"14px":"15px", color:theme.subText, lineHeight:"1.7", margin:"0 0 32px 0", textAlign:"left", alignSelf:"auto", maxWidth:"100%" }}>
                   Halo, Saya Alif, mahasiswa program Diploma <strong style={{ color:theme.text }}>Teknik Komputer</strong> di <strong style={{ color:theme.text }}>Politeknik Negeri Medan</strong> yang memiliki minat besar dalam pengembangan <strong style={{ color:theme.text }}>perangkat lunak</strong>, <strong style={{ color:theme.text }}>pengembangan web</strong>, dan <strong style={{ color:theme.text }}>kecerdasan buatan (Artificial Intelligence)</strong>. Saya senang mempelajari dan menerapkan teknologi untuk menciptakan solusi inovatif yang bermanfaat bagi masyarakat.

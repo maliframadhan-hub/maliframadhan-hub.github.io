@@ -738,6 +738,7 @@ function App() {
     { title:"Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Pandas","Matplotlib","Streamlit","Python"], type:"project", link:"https://9wowf62gvi4vvjyr2d23st.streamlit.app/", img:"streamlit.png" },
     { title:"Project Ucapan Ulang Tahun", desc:"Sistem web interaktif untuk menampilkan ucapan ulang tahun dengan animasi, gambar, dan musik secara personal.", tech:["HTML","CSS","JavaScript"], type:"project", link:"https://happy-birthday-nayla.vercel.app/", img:"webnayla.png" },
     { title:"RECYNT AI - Waste Detection System", desc:"Aplikasi berbasis AI untuk mendeteksi jenis sampah, memberikan informasi daur ulang, serta membantu pengelolaan limbah secara cerdas dan ramah lingkungan.", tech:["HTML","CSS","JavaScript","Node.js","YOLOv8","Python","FastAPI","MySQL"], type:"website application", link:"https://recynt-ai.vercel.app/", img:"recyntai.png" },
+    { title:"Website Summer Glamp", desc:"Glamour Camping .", tech:["HTML","CSS","JavaScript"], type:"website", link:"https://summerglamp.vercel.app/", img:"summerglamp.png" }
   ];
 
   const navLinks = ["Profile","Organisasi","Skill","Projects","Sertifikat","Contact"];

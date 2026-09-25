@@ -720,6 +720,7 @@ function App() {
     { title:"IDCamp 2025", issuer:"Dicoding Indonesia", date:"Des 2025", category:"Frontend", link:null, img:"idcamp.jpeg" },
     { title:"Seminar Nasional Pandu Digital", issuer:"Kementerian Komunikasi dan Informatika", date:"Nov 2022", category:"Event", link:"M. ALIF RAMADHAN 3.pdf", img:"Lokalkarya.jpeg" },
     { title:"Campus Expo MAN 1 Medan", issuer:"Campus Expo", date:"Jan 2024", category:"Event", link:"sertif.jpeg", img:"sertif.jpeg" },
+    { title:"Pelatihan Pertahanan Digital 101 untuk Individu dan UMKM", issuer:"Pusat Pengembangan Literasi Digital", date:"Des 2025", category:"Cyber Security", link:"digitalent.pdf", img:"digitalent.png" },
   ];
 
   const certCategories = ["Semua", ...Array.from(new Set(sertifikatData.map(c => c.category)))];
@@ -738,7 +739,7 @@ function App() {
     { title:"Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Pandas","Matplotlib","Streamlit","Python"], type:"project", link:"https://9wowf62gvi4vvjyr2d23st.streamlit.app/", img:"streamlit.png" },
     { title:"Project Ucapan Ulang Tahun", desc:"Sistem web interaktif untuk menampilkan ucapan ulang tahun dengan animasi, gambar, dan musik secara personal.", tech:["HTML","CSS","JavaScript"], type:"project", link:"https://happy-birthday-nayla.vercel.app/", img:"webnayla.png" },
     { title:"RECYNT AI - Waste Detection System", desc:"Aplikasi berbasis AI untuk mendeteksi jenis sampah, memberikan informasi daur ulang, serta membantu pengelolaan limbah secara cerdas dan ramah lingkungan.", tech:["HTML","CSS","JavaScript","Node.js","YOLOv8","Python","FastAPI","MySQL"], type:"website application", link:"https://recynt-ai.vercel.app/", img:"recyntai.png" },
-    { title:"Website Summer Glamp", desc:"Glamour Camping adalah website yang menyajikan informasi tentang paket liburan di lokasi camping dengan keindahan alam yang ditawarkan.", tech:["HTML","CSS","JavaScript"], type:"website", link:"https://summerglamp.vercel.app/", img:"summerglamp.png" },
+    { title:"Website Summer Glamp", desc:"Glamour Camping adalah website yang menyajikan informasi tentang paket liburan di lokasi camping dengan keindahan alam yang ditawarkan.", tech:["HTML","CSS","JavaScript"], type:"website", link:"https://summer-glamp.vercel.app/", img:"summerglamp.png" },
     { title:"Website E-commerce Jus Buah", desc:"Website e-commerce yang menjual berbagai macam jus buah segar dengan fitur pemesanan online.", tech:["HTML","Tailwind CSS","JavaScript"], type:"website", link:"https://justfriend-ce3a.vercel.app/", img:"justfriend.png" }
   ];
 

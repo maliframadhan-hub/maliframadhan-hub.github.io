@@ -39,7 +39,7 @@ function LoadingScreen({ onFinish }) {
 
   const tags = [
     ["HTML",    "rgba(37,99,235,0.15)",   "#60a5fa", "rgba(37,99,235,0.25)"],
-    ["React",      "rgba(34,197,94,0.12)",   "#4ade80", "rgba(34,197,94,0.2)"],
+    ["React",      "rgba(91,156,255,0.12)",   "#8ab9ff", "rgba(91,156,255,0.2)"],
     ["CSS", "rgba(37,99,235,0.15)",   "#60a5fa", "rgba(37,99,235,0.25)"],
     ["JavaScript", "rgba(255,255,255,0.05)", "#64748b", "rgba(255,255,255,0.08)"],
   ];
@@ -278,9 +278,9 @@ function WarningModal({ reason, onClose }) {
 function SecurityModal({ onClose }) {
   const items = [
     { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>, title:"Protected by Cloudflare CDN", desc:"Global Edge Caching & WAF Active", color:"#38bdf8" },
-    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, title:"XSS Protection Active (CSP)", desc:"Content Security Policy Implemented", color:"#22c55e" },
-    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>, title:"HSTS (Strict Transport Security)", desc:"Force HTTPS Connection Active", color:"#22c55e" },
-    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>, title:"Input Sanitization Enforced", desc:"Mencegah Injeksi Kode Berbahaya (XSS/SQLi)", color:"#22c55e" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5b9cff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, title:"XSS Protection Active (CSP)", desc:"Content Security Policy Implemented", color:"#5b9cff" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5b9cff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>, title:"HSTS (Strict Transport Security)", desc:"Force HTTPS Connection Active", color:"#5b9cff" },
+    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5b9cff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>, title:"Input Sanitization Enforced", desc:"Mencegah Injeksi Kode Berbahaya (XSS/SQLi)", color:"#5b9cff" },
     { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>, title:"DDoS Rate Limiting", desc:"Mencegah Kelebihan Beban Lalu Lintas", color:"#f59e0b" },
     { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>, title:"Vercel Deployment Integrity", desc:"Serverless Functions Isolated & Monitored", color:"#818cf8" },
   ];
@@ -290,11 +290,11 @@ function SecurityModal({ onClose }) {
       <div style={{ width:"100%", maxWidth:"460px", backgroundColor:"#1a2035", border:"1px solid rgba(255,255,255,0.08)", borderRadius:"20px", overflow:"hidden", boxShadow:"0 40px 80px rgba(0,0,0,0.6)", animation:"modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards" }}>
         <div style={{ padding:"24px 24px 20px", borderBottom:"1px solid rgba(255,255,255,0.07)", display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:"12px" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"12px" }}>
-            <div style={{ width:"42px", height:"42px", borderRadius:"12px", backgroundColor:"rgba(34,197,94,0.12)", border:"1px solid rgba(34,197,94,0.3)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div style={{ width:"42px", height:"42px", borderRadius:"12px", backgroundColor:"rgba(91,156,255,0.12)", border:"1px solid rgba(91,156,255,0.3)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5b9cff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div>
-              <h3 style={{ margin:0, fontSize:"18px", fontWeight:"800", color:"#22c55e" }}>Security & Compliance Report</h3>
+              <h3 style={{ margin:0, fontSize:"18px", fontWeight:"800", color:"#8ab9ff" }}>Security & Compliance Report</h3>
               <p style={{ margin:"4px 0 0 0", fontSize:"12px", color:"#94a3b8", lineHeight:"1.5" }}>Aplikasi ini dirancang dengan standar keamanan modern.</p>
             </div>
           </div>
@@ -317,8 +317,8 @@ function SecurityModal({ onClose }) {
         </div>
         <div style={{ padding:"16px 20px", borderTop:"1px solid rgba(255,255,255,0.07)", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"6px" }}>
-            <span style={{ width:"8px", height:"8px", backgroundColor:"#22c55e", borderRadius:"50%", display:"inline-block" }}/>
-            <span style={{ fontSize:"12px", color:"#22c55e", fontWeight:"600" }}>All systems operational</span>
+            <span style={{ width:"8px", height:"8px", backgroundColor:"#5b9cff", borderRadius:"50%", display:"inline-block" }}/>
+            <span style={{ fontSize:"12px", color:"#8ab9ff", fontWeight:"600" }}>All systems normal</span>
           </div>
           <span style={{ fontSize:"11px", color:"#475569", fontFamily:"monospace" }}>v2.1.0 · 2026</span>
         </div>
@@ -341,7 +341,7 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
   const thumbHeight = isMobile ? "220px" : isTablet ? "200px" : "175px";
 
   return (
-    <div
+    <div className="project-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -362,9 +362,9 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
     >
       <div style={{ height:"3px", background: hovered ? "linear-gradient(90deg,#2563eb,#60a5fa)" : "transparent", transition:"background 0.3s ease" }} />
 
-      <div style={{
+      <div className="project-media" style={{
         width: "100%",
-        height: thumbHeight,
+        height: isMobile && hasThumbnail ? "auto" : thumbHeight,
         backgroundColor: darkMode ? "#0d1526" : "#e8edf5",
         overflow: "hidden",
         position: "relative",
@@ -377,12 +377,12 @@ function ProjectCard({ proj, theme, darkMode, isMobile, isTablet }) {
             onError={() => setImgError(true)}
             style={{
               width: "100%",
-              height: "100%",
-              objectFit: "cover",
+              height: isMobile ? "auto" : "100%",
+              objectFit: isMobile ? "contain" : "cover",
               objectPosition: "top center",
               display: "block",
               transition: "transform 0.4s ease",
-              transform: hovered ? "scale(1.04)" : "scale(1)",
+              transform: hovered && !isMobile ? "scale(1.04)" : "scale(1)",
             }}
           />
         ) : (
@@ -469,7 +469,7 @@ function CertCard({ cert, theme, darkMode, isMobile, isTablet }) {
   const thumbHeight = isMobile ? "230px" : isTablet ? "200px" : "165px";
 
   return (
-    <div
+    <div className="cert-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -487,13 +487,12 @@ function CertCard({ cert, theme, darkMode, isMobile, isTablet }) {
       }}
     >
       <div style={{ height:"3px", background: hovered ? "linear-gradient(90deg,#2563eb,#60a5fa)" : "transparent", transition:"background 0.3s ease" }} />
-      <div style={{ width:"100%", height: thumbHeight, backgroundColor: darkMode?"#0d1526":"#e8edf5", overflow:"hidden", position:"relative", flexShrink:0 }}>
+      <div className="cert-media" style={{ width:"100%", height: thumbHeight, backgroundColor: darkMode?"#0d1526":"#e8edf5", overflow:"hidden", position:"relative", flexShrink:0 }}>
         {hasThumbnail ? (
-          <img src={cert.img} alt={cert.title} onError={() => setImgError(true)}
+          <img src={`/${cert.img}`} alt={cert.title} onError={() => setImgError(true)}
             style={{
               width:"100%", height:"100%",
-              objectFit:"cover",
-              objectPosition:"top center",
+              objectFit:"contain",
               display:"block",
             }} />
         ) : (
@@ -649,8 +648,8 @@ function App() {
     return () => { document.body.style.userSelect = ""; document.body.style.webkitUserSelect = ""; };
   }, []);
 
-  const typedText     = useTypingAnimation(["IT Student & Developer","Laravel Enthusiast","Database Architect","Open Source Contributor"], 85, 45, 2000, 400);
-  const heroTypedText = useTypingAnimation(["IT Student & Developer","Laravel Enthusiast","Database Architect","Open Source Contributor"], 85, 45, 2000, 400);
+  const typedText     = useTypingAnimation(["IT Student","Full Stack Developer","IoT Engineer","Cybersecurity Enthusiast"], 85, 45, 2000, 400);
+  const heroTypedText = useTypingAnimation(["IT Student","Full Stack Developer","IoT Engineer","Cybersecurity Enthusiast"], 85, 45, 2000, 400);
 
   useEffect(() => { const interval = setInterval(() => setBrandingCursor(v => !v), 530); return () => clearInterval(interval); }, []);
   useEffect(() => {
@@ -679,7 +678,7 @@ function App() {
     subText:    darkMode?"#94a3b8":"#475569",
     border:     darkMode?"rgba(255,255,255,0.08)":"#c8d5e8",
     navBg:      darkMode?"rgba(30,41,59,0.85)":"rgba(248,251,255,0.92)",
-    techCard:   darkMode?"#111827":"#f8fafc",
+    techCard:   darkMode?"#1b1e22":"#f8fafc",
     gridColor:  darkMode?"rgba(255,255,255,0.04)":"rgba(15,23,42,0.05)",
     badgeBg:    darkMode?"rgba(99,102,241,0.12)":"#e0e7ff",
     badgeText:  darkMode?"#a5b4fc":"#4f46e5",
@@ -691,7 +690,7 @@ function App() {
     { jabatan:"Ketua IT OSIM", tahun:"(2023 - 2024)", instansi:"MAN 1 Medan", deskripsi:"Memimpin divisi IT dalam organisasi OSIM MAN 1 Medan, mengelola infrastruktur teknologi sekolah, serta mengkoordinasikan program berbasis digital.", img:"/it_osim.jpeg" },
     { jabatan:"Ketua Pandu Digital", tahun:"(2023 - 2024)", instansi:"MAN 1 Medan", deskripsi:"Memimpin organisasi Pandu Digital MAN 1 Medan, mengkoordinasikan program literasi digital untuk siswa dan pengembangan kompetensi digital anggota.", img:"/ketum_pandig.jpeg" },
     { jabatan:"Anggota UKM EPS", tahun:"(2025 - 2026)", instansi:"Politeknik Negeri Medan", deskripsi:"Aktif dalam Unit Kegiatan Mahasiswa English Public Speaking (EPS) Politeknik Negeri Medan, pengembangan kemampuan komunikasi profesional bahasa Inggris.", img:"/logo-eps.jpg" },
-    { jabatan:"Staff Inti Teknis", tahun:"(2026)", instansi:"Developer Student Community", deskripsi:"Berpartisipasi aktif dalam merancang arsitektur database untuk aplikasi open-source skala komunitas mahasiswa.", img:"/tekdevdent_com.jpeg" },
+    { jabatan:"Staff Inti Teknis", tahun:"(2026)", instansi:"Developer Student Community", deskripsi:"Mendukung kegiatan teknis komunitas dan berkolaborasi dalam berbagai program pengembangan teknologi.", img:"/tekdevdent_com.jpeg" },
   ];
 
   const techStack = {
@@ -711,16 +710,17 @@ function App() {
 
   const sertifikatData = [
     { title:"Ketua Umum Pandu Digital Man 1 Medan", issuer:"Pandu Digital MAN 1 Medan", date:"Juli 2024", category:"General", link:"sertif pandig_20250214_153816_0000.pdf", img:"pandig.jpeg" },
-    { title:"Ketua IT OSIM Man 1 Medan", issuer:"Organisasi Siswa Intra Madrasah MAN 1 Medan", date:"Sept 2024", category:"General", link:"Sertifikat Ketua IT OSIM.pdf", img:"IT Osim.jpeg" },
-    { title:"Jambore Nasional TIK", issuer:"Jaringan Sekolah Digital Indonesia", date:"Nov 2022", category:"Competition", link:"M. ALIF RAMADHAN (2) (1).pdf", img:"sertif lomba pandig.png" },
-    { title:"Laravel Backend Development Fundamentals", issuer:"Dicoding Indonesia", date:"Jan 2024", category:"Backend", link:null, img:"laravel.png" },
+    { title:"Ketua Koordinator Bidang IT OSIM Man 1 Medan", issuer:"OSIM MAN 1 Medan", date:"Sept 2024", category:"General", link:"Sertifikat Ketua IT OSIM.pdf", img:"IT Osim.jpeg" },
+    { title:"Jambore Nasional TIK ke - 2", issuer:"Jaringan Sekolah Digital Indonesia", date:"Nov 2022", category:"Competition", link:"M. ALIF RAMADHAN (2) (1).pdf", img:"sertif lomba pandig.png" },
     { title:"Workshop Capacity Building", issuer:"Pandu Digital MAN 1 Medan", date:"Feb 2023", category:"Event", link:"M. ALIF RAMADHAN.pdf", img:"Sertifikat Workshop Capacity Building.jpeg" },
-    { title:"Build With AI 2026 (BWAI)", issuer:"Google Developer", date:"Mei 2026", category:"Cloud", link:null, img:"bwai.jpeg" },
+    { title:"Build With AI 2026 (BWAI)", issuer:"Google Developer", date:"Mei 2026", category:"Cloud", link:"certificate-119735-103578899288112558952.pdf", img:"bwai.jpeg" },
     { title:"Makin Cakap Digital", issuer:"Dinas Pendidikan Prov. Sumatera Utara", date:"Sept 2022", category:"Event", link:"M. ALIF RAMADHAN (2).pdf", img:"Cakap digital.jpeg" },
     { title:"IDCamp 2025", issuer:"Dicoding Indonesia", date:"Des 2025", category:"Frontend", link:null, img:"idcamp.jpeg" },
     { title:"Seminar Nasional Pandu Digital", issuer:"Kementerian Komunikasi dan Informatika", date:"Nov 2022", category:"Event", link:"M. ALIF RAMADHAN 3.pdf", img:"Lokalkarya.jpeg" },
-    { title:"Campus Expo MAN 1 Medan", issuer:"Campus Expo", date:"Jan 2024", category:"Event", link:"sertif.jpeg", img:"sertif.jpeg" },
-    { title:"Pelatihan Pertahanan Digital 101 untuk Individu dan UMKM", issuer:"Pusat Pengembangan Literasi Digital", date:"Des 2025", category:"Cyber Security", link:"digitalent.pdf", img:"digitalent.png" },
+    { title:"Campus Expo MAN 1 Medan", issuer:"Campus Expo MAN 1 Medan", date:"Jan 2024", category:"Event", link:"sertif.jpeg", img:"sertif.jpeg" },
+    { title:"Pelatihan Pertahanan Digital 101 untuk Individu dan UMKM", issuer:"Komdigi", date:"Des 2025", category:"Cyber Security", link:"digitalent.pdf", img:"digitalent.png" },
+    { title:"Kecerdasan Artifisial No-Code Studio: Membuat Aplikasi dan Website Tanpa Coding", issuer: "Komdigi", date: "Okt 2026", category: "Artificial Intelligence", link: "Kecerdasan Artifisial No-Code Studio_ Membuat Aplikasi dan Website Tanpa Coding.pdf", img: "no-code studio.png" },
+    { title:"Dampak Teknologi Digital bagi UMKM", issuer: "Komdigi", date: "Okt 2026", category: "Digital Transformation", link: "Dampak Teknologi Digital bagi UMKM.pdf", img: "dampak-digital-umkm.png" }
   ];
 
   const certCategories = ["Semua", ...Array.from(new Set(sertifikatData.map(c => c.category)))];
@@ -733,14 +733,12 @@ function App() {
   ];
 
   const projectsData = [
-    { title:"Website OSIM MAN 1 Medan", desc:"Website resmi OSIM MAN 1 Medan yang menyajikan informasi terkini tentang siswa/siswi MAN 1 Medan.", tech:["HTML","CSS","Website"], type:"website", link:"https://osimman1medan.vercel.app/", img:"osim.png" },
-    { title:"Sistem Monitoring Kelas", desc:"Aplikasi untuk memonitoring kehadiran dan aktivitas mahasiswa di dalam kelas secara real-time.", tech:["FastAPI","SQLServer","PHP"], type:"website", link:"https://sistemmonitoringkelas.page.gd/", img:"sistem.jpeg" },
-    { title:"Proyek Penjualan", desc:"Sistem informasi untuk mengelola penjualan produk secara efisien dan efektif.", tech:["React Client","PHP","MySQL"], type:"website", link:"https://proyekpenjualan.infinityfreeapp.com/", img:"proyekpenjualan.jpeg" },
-    { title:"Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Pandas","Matplotlib","Streamlit","Python"], type:"project", link:"https://9wowf62gvi4vvjyr2d23st.streamlit.app/", img:"streamlit.png" },
-    { title:"Project Ucapan Ulang Tahun", desc:"Sistem web interaktif untuk menampilkan ucapan ulang tahun dengan animasi, gambar, dan musik secara personal.", tech:["HTML","CSS","JavaScript"], type:"project", link:"https://happy-birthday-nayla.vercel.app/", img:"webnayla.png" },
+    { title:"Website OSIM MAN 1 Medan", desc:"Website resmi OSIM MAN 1 Medan yang menyajikan informasi terkini tentang siswa/siswi MAN 1 Medan.", tech:["HTML","CSS","Website"], type:"website", link:"https://osimman1medan.com/", img:"osim.png" },
+    { title:"Sistem Analisis Kelulusan Mahasiswa", desc:"Sistem untuk menganalisis data kelulusan mahasiswa berdasarkan berbagai faktor akademik.", tech:["Pandas","Matplotlib","Streamlit","Python"], type:"project", link:"https://9wowf62gvi4vvjyr2d23st.streamlit.app/", img:"streamlit.png" },
     { title:"RECYNT AI - Waste Detection System", desc:"Aplikasi berbasis AI untuk mendeteksi jenis sampah, memberikan informasi daur ulang, serta membantu pengelolaan limbah secara cerdas dan ramah lingkungan.", tech:["HTML","CSS","JavaScript","Node.js","YOLOv8","Python","FastAPI","MySQL"], type:"website application", link:"https://recynt-ai.vercel.app/", img:"recyntai.png" },
-    { title:"Website Summer Glamp", desc:"Glamour Camping adalah website yang menyajikan informasi tentang paket liburan di lokasi camping dengan keindahan alam yang ditawarkan.", tech:["HTML","CSS","JavaScript"], type:"website", link:"https://summer-glamp.vercel.app/", img:"summerglamp.png" },
-    { title:"Website E-commerce Jus Buah", desc:"Website e-commerce yang menjual berbagai macam jus buah segar dengan fitur pemesanan online.", tech:["HTML","Tailwind CSS","JavaScript"], type:"website", link:"https://justfriend-ce3a.vercel.app/", img:"justfriend.png" }
+    { title:"Summer Glamp", desc:"Glamour Camping adalah website yang menyajikan informasi tentang paket liburan di lokasi camping dengan keindahan alam yang ditawarkan.", tech:["HTML","CSS","JavaScript"], type:"website", link:"https://summer-glamp.vercel.app/", img:"summerglamp.png" },
+    { title:"JusTFriend", desc:"Website e-commerce yang menjual berbagai macam jus buah segar dengan fitur pemesanan online.", tech:["HTML","Tailwind CSS","JavaScript"], type:"website", link:"https://justfriend-ce3a.vercel.app/", img:"justfriend.png" },
+    { title:"Pancasilanet", desc:"Media edukasi interaktif untuk membantu masyarakat memahami etika bermedia sosial dan menerapkan nilai-nilai Pancasila di ruang digital.", tech:["HTML","CSS","JavaScript"], type:"website", link:"https://pancasilanet.vercel.app/", img:"pancasilanet.png" },  
   ];
 
   const navLinks = ["Profile","Organisasi","Skill","Projects","Sertifikat","Contact"];
@@ -771,11 +769,12 @@ function App() {
   const heroPad    = isMobile ? "32px 20px 40px" : isTablet ? "48px 32px 56px" : "80px 40px 60px 40px";
   const sectionPad = isMobile ? "40px 20px" : isTablet ? "60px 32px" : "80px 10%";
   const navPad     = isMobile ? "14px 20px" : "18px 10%";
-  const orgCols    = isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)";
+  const orgCols    = isMobile ? "1fr" : windowWidth < 1280 ? "repeat(2,1fr)" : "repeat(4,1fr)";
 
-  // ─── Konsisten grid untuk section Projects: 1 / 2 / 3 kolom ───
-  const projectCols = isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)";
-  const projectMaxWidth = isMobile ? "520px" : isTablet ? "820px" : "1200px";
+  const projectCols = isMobile ? "1fr" : windowWidth < 1200 ? "repeat(2,1fr)" : "repeat(3,1fr)";
+  const projectMaxWidth = isMobile ? "520px" : windowWidth < 1200 ? "820px" : "1200px";
+  const certCols = isMobile ? "1fr" : windowWidth < 1200 ? "repeat(2,1fr)" : windowWidth < 1280 ? "repeat(3,1fr)" : "repeat(4,1fr)";
+  const certStatsCols = windowWidth < 900 ? "repeat(2,1fr)" : "repeat(4,1fr)";
 
   // ─── Tombol seragam (ukuran, radius, weight) di semua device ───
   const btn = {
@@ -805,7 +804,7 @@ function App() {
       {!appLoaded && <LoadingScreen onFinish={handleLoadFinish} />}
 
       {/* ✅ MAIN CONTENT — fade in setelah loading selesai */}
-      <div style={{
+      <div className={`portfolio-shell ${darkMode ? "theme-dark" : "theme-light"}`} style={{
         margin: 0,
         fontFamily: "'Plus Jakarta Sans','Inter',sans-serif",
         color: theme.text,
@@ -918,10 +917,10 @@ function App() {
         `}</style>
 
         {/* BACKGROUND GRID */}
-        <div style={{ position:"fixed", top:"-5%", left:"-5%", width:"110%", height:"110%", pointerEvents:"none", zIndex:0, backgroundImage:`linear-gradient(to right,${theme.gridColor} 1px,transparent 1px),linear-gradient(to bottom,${theme.gridColor} 1px,transparent 1px)`, backgroundSize:"40px 40px", transform:`translate(${mousePos.x}px,${mousePos.y}px)`, transition:"transform 0.1s cubic-bezier(0.25,1,0.5,1)" }} />
+        <div className="ambient-grid" style={{ position:"fixed", top:"-5%", left:"-5%", width:"110%", height:"110%", pointerEvents:"none", zIndex:0, backgroundImage:`linear-gradient(to right,${theme.gridColor} 1px,transparent 1px),linear-gradient(to bottom,${theme.gridColor} 1px,transparent 1px)`, backgroundSize:"40px 40px", transform:`translate(${mousePos.x}px,${mousePos.y}px)`, transition:"transform 0.1s cubic-bezier(0.25,1,0.5,1)" }} />
 
         {/* NAVBAR */}
-        <nav style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:navPad, backgroundColor:theme.navBg, borderBottom:`1px solid ${theme.border}`, backdropFilter:"blur(20px)", WebkitBackdropFilter:"blur(20px)", position:"sticky", top:0, zIndex:1000, transition:"background-color 0.3s ease" }}>
+        <nav className="portfolio-nav" style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:navPad, backgroundColor:theme.navBg, borderBottom:`1px solid ${theme.border}`, backdropFilter:"blur(20px)", WebkitBackdropFilter:"blur(20px)", position:"sticky", top:0, zIndex:1000, transition:"background-color 0.3s ease" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"2px", minWidth:0, overflow:"hidden" }}>
             <span style={{ color:"#2563eb", fontWeight:"700", fontSize:"16px", flexShrink:0 }}>$</span>
             <h2 style={{ margin:0, fontSize:isMobile?"13px":"16px", fontWeight:"600", fontFamily:"monospace", color:theme.text, display:"flex", alignItems:"center", whiteSpace:"nowrap" }}>
@@ -990,15 +989,15 @@ function App() {
 
           {/* HERO */}
           <div id="profile" style={{ position:"relative", width:"100%" }}>
-            <div style={{ position:"absolute", top:"20px", left:"50%", transform:"translateX(-50%)", width:"92%", height:"calc(100% - 40px)", backgroundColor:darkMode?"#1a2744":"rgba(210,225,245,0.5)", border:darkMode?"1px solid rgba(26,39,68,0.6)":"1px solid rgba(180,200,230,0.6)", borderRadius:"28px", zIndex:0, pointerEvents:"none" }} />
-            <section style={{ display:"grid", gridTemplateColumns:heroGrid, gap:0, maxWidth:"1150px", margin:"0 auto", padding:heroPad, alignItems:"center", position:"relative", zIndex:1 }}>
+            <div className="hero-backdrop" style={{ position:"absolute", top:"20px", left:"50%", transform:"translateX(-50%)", width:"92%", height:"calc(100% - 40px)", backgroundColor:darkMode?"#1a2744":"rgba(210,225,245,0.5)", border:darkMode?"1px solid rgba(26,39,68,0.6)":"1px solid rgba(180,200,230,0.6)", borderRadius:"28px", zIndex:0, pointerEvents:"none" }} />
+            <section className="hero-layout" style={{ display:"grid", gridTemplateColumns:heroGrid, gap:0, maxWidth:"1150px", margin:"0 auto", padding:heroPad, alignItems:"center", position:"relative", zIndex:1 }}>
               <div className="hero-photo-col" style={{ display:"flex", justifyContent:"center", marginBottom:isDesktop?0:"28px" }}>
-                <div className="photo-wrapper"
+                <div className="photo-wrapper hero-photo-frame"
                   onMouseEnter={() => setPhotoHovered(true)}
                   onMouseLeave={() => { setPhotoHovered(false); setPhotoMousePos({x:0,y:0}); }}
                   onMouseMove={handlePhotoMouseMove}
                   style={{ position:"relative", width:"100%", maxWidth:isMobileOrTablet?"180px":"320px", backgroundColor:theme.cardBg, borderRadius:isMobileOrTablet?"50%":"24px", padding:isMobileOrTablet?"0":"16px", boxShadow:photoHovered?"0 30px 60px rgba(0,0,0,0.2),0 0 0 1px #2563eb":darkMode?"0 20px 40px rgba(0,0,0,0.4)":"0 20px 40px rgba(15,23,42,0.1)", border:`${isMobileOrTablet?"3px":"2px"} solid ${darkMode?"#2563eb":"#94b8d8"}`, transform:photoHovered?`perspective(800px) rotateX(${-photoMousePos.y}deg) rotateY(${photoMousePos.x}deg) scale(1.03)`:"perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)", transition:photoHovered?"transform 0.1s ease,box-shadow 0.3s ease":"transform 0.5s cubic-bezier(0.25,1,0.5,1),box-shadow 0.3s ease", cursor:"pointer" }}>
-                  <div className="photo-inner" style={{ width:"100%", height:isMobileOrTablet?"180px":"340px", borderRadius:isMobileOrTablet?"50%":"16px", overflow:"hidden", backgroundColor:darkMode?"#0f172a":"#d8e6f2", border:isMobileOrTablet?"none":`1px solid ${theme.border}`, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                  <div className="photo-inner hero-photo-window" style={{ width:"100%", height:isMobileOrTablet?"180px":"340px", borderRadius:isMobileOrTablet?"50%":"16px", overflow:"hidden", backgroundColor:darkMode?"#0f172a":"#d8e6f2", border:isMobileOrTablet?"none":`1px solid ${theme.border}`, display:"flex", alignItems:"center", justifyContent:"center" }}>
                     <img src="/foto-alif.jpeg" alt="M. Alif Ramadhan" style={{ width:isMobileOrTablet?"180px":"100%", height:isMobileOrTablet?"180px":"100%", objectFit:"cover", objectPosition:"center top", display:"block", borderRadius:isMobileOrTablet?"50%":"0" }} />
                   </div>
                   {isDesktop && (
@@ -1015,7 +1014,7 @@ function App() {
 
               {isDesktop && <div style={{ width:"1px", alignSelf:"stretch", background:darkMode?"linear-gradient(to bottom,transparent,rgba(99,102,241,0.4),rgba(37,99,235,0.4),transparent)":"linear-gradient(to bottom,transparent,rgba(37,99,235,0.25),rgba(99,102,241,0.25),transparent)", margin:"20px 40px", flexShrink:0 }}/>}
 
-              <div className="hero-content-col" style={{ display:"flex", flexDirection:"column", alignItems:isMobileOrTablet?"center":"flex-start" }}>
+              <div className="hero-content-col hero-content" style={{ display:"flex", flexDirection:"column", alignItems:isMobileOrTablet?"center":"flex-start" }}>
                 <h1 style={{ fontSize:heroNameFS, fontWeight:"900", color:theme.text, margin:"0 0 8px 0", letterSpacing:"-1px", lineHeight:1.1, textAlign:isMobileOrTablet?"center":"left" }}>M. Alif Ramadhan</h1>
                 <h3 style={{ fontSize:heroSubFS, fontWeight:"600", color:theme.subText, margin:"0 0 24px 0", display:"flex", alignItems:"center", minHeight:isMobile?"28px":"42px", flexWrap:"wrap", justifyContent:isMobileOrTablet?"center":"flex-start" }}>
                   {heroTypedText}<span className="typing-cursor-lg"/>
@@ -1026,7 +1025,7 @@ function App() {
                   <span style={{ color:"#64748b" }}>&</span>
                   <span style={{ fontSize:"12px", fontWeight:"600", color:darkMode?"#4ade80":"#166534", backgroundColor:darkMode?"rgba(74,222,128,0.15)":"#bbf7d0", padding:"3px 10px", borderRadius:"6px" }}>Development Operations</span>
                 </div>
-                <a href="https://recynt-ai.vercel.app/" target="_blank" rel="noreferrer"
+                <a href="https://justfriend-ce3a.vercel.app/" target="_blank" rel="noreferrer"
                   className="hero-live-badge"
                   style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"6px 12px", backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"8px", marginBottom:"24px", textDecoration:"none", transition:"border-color 0.2s, box-shadow 0.2s" }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor="#2563eb"; e.currentTarget.style.boxShadow="0 0 0 3px rgba(37,99,235,0.1)"; }}
@@ -1034,7 +1033,7 @@ function App() {
                   <span style={{ width:"6px", height:"6px", backgroundColor:"#3b82f6", borderRadius:"50%", flexShrink:0 }}/>
                   <span style={{ fontSize:"11px", fontWeight:"700", color:"#3b82f6", textTransform:"uppercase" }}>Live Project</span>
                   <span style={{ color:"#cbd5e1" }}>|</span>
-                  <span style={{ fontSize:isMobile?"10px":"12px", color:theme.subText, fontWeight:"500" }}>RECYNT AI ↗</span>
+                  <span style={{ fontSize:isMobile?"10px":"12px", color:theme.subText, fontWeight:"500" }}>JusTfriend ↗</span>
                 </a>
                 <p className="hero-desc-text" style={{ fontSize:isMobile?"14px":"15px", color:theme.subText, lineHeight:"1.7", margin:"0 0 32px 0", textAlign:"justify", textAlignLast:"left", hyphens:"auto", WebkitHyphens:"auto", wordSpacing:"-0.5px", alignSelf:"auto", maxWidth:"100%" }}>
                   Halo, Saya Alif, mahasiswa program Diploma <strong style={{ color:theme.text }}>Teknik Komputer</strong> di <strong style={{ color:theme.text }}>Politeknik Negeri Medan</strong> yang memiliki minat besar dalam pengembangan <strong style={{ color:theme.text }}>perangkat lunak</strong>, <strong style={{ color:theme.text }}>pengembangan web</strong>, dan <strong style={{ color:theme.text }}>kecerdasan buatan (Artificial Intelligence)</strong>. Saya senang mempelajari dan menerapkan teknologi untuk menciptakan solusi inovatif yang bermanfaat bagi masyarakat.
@@ -1078,12 +1077,11 @@ function App() {
           </section>
 
           {/* ORGANISASI */}
-          <section id="organisasi" style={{ padding:isMobile?"40px 20px 60px":isTablet?"40px 28px 60px":"40px 3% 70px", backgroundColor:darkMode?"transparent":theme.sectionAlt, borderTop:`1px solid ${theme.border}`, borderBottom:`1px solid ${theme.border}` }}>
+          <section id="organisasi" className="portfolio-section" style={{ padding:isMobile?"40px 20px 60px":isTablet?"40px 28px 60px":"40px 3% 70px", backgroundColor:darkMode?"transparent":theme.sectionAlt, borderTop:`1px solid ${theme.border}`, borderBottom:`1px solid ${theme.border}` }}>
             <h2 className="scroll-animate section-heading" style={{ fontSize:isMobile?"20px":"26px", fontWeight:"800", textAlign:"center", color:theme.text, marginBottom:"32px" }}>Pengalaman Organisasi</h2>
             <div style={{ display:"grid", gridTemplateColumns:orgCols, gap:"20px", maxWidth:"1200px", margin:"0 auto" }}>
               {organisasiData.map((org, idx) => (
-                <div key={idx}
-                  className={`scroll-animate scroll-delay-${Math.min(idx+1,4)}`}
+                <div key={idx} className={`organization-card scroll-animate scroll-delay-${Math.min(idx+1,4)}`}
                   onMouseEnter={() => setHoveredOrg(idx)} onMouseLeave={() => setHoveredOrg(null)}
                   style={{ backgroundColor:theme.cardBg, border:`1px solid ${hoveredOrg===idx?"#2563eb":theme.border}`, borderRadius:"20px", padding:"40px 28px", textAlign:"center", display:"flex", flexDirection:"column", alignItems:"center", transition:"all 0.3s cubic-bezier(0.4,0,0.2,1)", transform:hoveredOrg===idx?"translateY(-4px)":"translateY(0)", boxShadow:hoveredOrg===idx?"0 16px 36px rgba(37,99,235,0.1)":"0 4px 12px rgba(0,0,0,0.04)" }}>
                   <div style={{ width:"80px", height:"80px", borderRadius:"50%", overflow:"hidden", marginBottom:"16px", border:`2px solid ${hoveredOrg===idx?"#2563eb":theme.border}`, backgroundColor:darkMode?"#0f172a":"#d8e6f2" }}>
@@ -1098,7 +1096,7 @@ function App() {
           </section>
 
           {/* SKILL */}
-          <section id="skill" style={{ backgroundColor:darkMode?"#1a2744":theme.cardBg, borderTop:`1px solid ${theme.border}`, borderBottom:`1px solid ${theme.border}`, padding:sectionPad, transition:"background-color 0.3s ease" }}>
+          <section id="skill" className="portfolio-section" style={{ backgroundColor:darkMode?"#1a2744":theme.cardBg, borderTop:`1px solid ${theme.border}`, borderBottom:`1px solid ${theme.border}`, padding:sectionPad, transition:"background-color 0.3s ease" }}>
             <div className="scroll-animate" style={{ textAlign:"center", marginBottom:"36px" }}>
               <h2 className="section-heading" style={{ fontSize:isMobile?"20px":"28px", fontWeight:"800", color:theme.text, margin:"0 0 8px 0" }}>My Skills & Ability</h2>
               <p style={{ color:"#64748b", margin:0, fontSize:"14px" }}>Komposisi teknologi yang saya gunakan untuk mewujudkan ide menjadi kenyataan.</p>
@@ -1115,7 +1113,7 @@ function App() {
             </div>
             <div style={{ display:"grid", gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(4,1fr)", gap:"16px", maxWidth:"1000px", margin:"0 auto" }}>
               {techStack[activeTab].map((tech, i) => (
-                <div key={i} className={`scroll-animate scroll-delay-${Math.min(i+1,4)}`}
+                <div key={i} className={`skill-card scroll-animate scroll-delay-${Math.min(i+1,4)}`}
                   style={{ backgroundColor:darkMode?"#111827":"#f0f4f8", border:`1px solid ${theme.border}`, borderRadius:"14px", padding:"18px", display:"flex", flexDirection:"column", justifyContent:"space-between", minHeight:"80px" }}>
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                     <span style={{ fontWeight:"700", fontSize:"14px", color:theme.text }}>{tech.name}</span>
@@ -1131,7 +1129,7 @@ function App() {
           </section>
 
           {/* PROJECTS */}
-          <section id="projects" style={{ padding:sectionPad, backgroundColor:darkMode?"transparent":theme.sectionAlt, borderBottom:`1px solid ${theme.border}` }}>
+          <section id="projects" className="portfolio-section" style={{ padding:sectionPad, backgroundColor:darkMode?"transparent":theme.sectionAlt, borderBottom:`1px solid ${theme.border}` }}>
             <div className="scroll-animate" style={{ textAlign:"center", marginBottom:"40px" }}>
               <h2 className="section-heading" style={{ fontSize:isMobile?"20px":"28px", fontWeight:"800", color:theme.text, margin:"0 0 8px 0" }}>My Projects</h2>
               <p style={{ color:"#64748b", margin:0, fontSize:"14px" }}>Kumpulan proyek yang telah saya kerjakan.</p>
@@ -1146,7 +1144,7 @@ function App() {
           </section>
 
           {/* TECH SCROLL */}
-          <section style={{ background: darkMode?"#1a2335":"#e0e8f4", padding:"44px 0 36px", overflow:"hidden", borderTop:`1px solid ${darkMode?"rgba(255,255,255,0.06)":"#b8cce0"}`, borderBottom:`1px solid ${darkMode?"rgba(255,255,255,0.06)":"#b8cce0"}` }}>
+          <section className="tech-band" style={{ background: darkMode?"#1a2335":"#e0e8f4", padding:"44px 0 36px", overflow:"hidden", borderTop:`1px solid ${darkMode?"rgba(255,255,255,0.06)":"#b8cce0"}`, borderBottom:`1px solid ${darkMode?"rgba(255,255,255,0.06)":"#b8cce0"}` }}>
             <h2 className="scroll-animate" style={{ color: darkMode?"#fff":"#1e293b", textAlign:"center", fontWeight:"700", fontSize:isMobile?"18px":"22px", margin:"0 0 2rem" }}>My Go-To Tech Stack</h2>
             <div style={{ position:"relative", overflow:"hidden" }}>
               <div className="ts-track">
@@ -1161,14 +1159,14 @@ function App() {
           </section>
 
           {/* SERTIFIKAT */}
-          <section id="sertifikat" style={{ padding:sectionPad, backgroundColor:darkMode?"transparent":theme.cardBg, borderBottom:`1px solid ${theme.border}` }}>
+          <section id="sertifikat" className="portfolio-section" style={{ padding:sectionPad, backgroundColor:darkMode?"transparent":theme.cardBg, borderBottom:`1px solid ${theme.border}` }}>
             <div className="scroll-animate" style={{ textAlign:"center", marginBottom:"36px" }}>
               <h2 className="section-heading" style={{ fontSize:isMobile?"20px":"28px", fontWeight:"800", color:theme.text, margin:"0 0 8px 0" }}>My Certificate</h2>
               <p style={{ color:"#64748b", margin:"0 auto", fontSize:"14px", maxWidth:"560px" }}>Kumpulan sertifikat standar keahlian dan kualifikasi teknis yang saya miliki.</p>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:isMobile?"repeat(2,1fr)":"repeat(4,1fr)", gap:"16px", maxWidth:"800px", margin:"0 auto 36px" }}>
+            <div style={{ display:"grid", gridTemplateColumns:certStatsCols, gap:"16px", maxWidth:"800px", margin:"0 auto 36px" }}>
               {certStats.map((s, i) => (
-                <div key={i} className={`scroll-animate scroll-delay-${Math.min(i+1,4)}`}
+                <div key={i} className={`cert-stat scroll-animate scroll-delay-${Math.min(i+1,4)}`}
                   style={{ backgroundColor:theme.cardBg, border:`1px solid ${theme.border}`, borderRadius:"14px", padding:"20px 16px", textAlign:"center", boxShadow: darkMode?"none":"0 2px 8px rgba(0,0,0,0.06)" }}>
                   <h3 style={{ margin:0, fontSize:"28px", fontWeight:"800", color:"#2563eb" }}>{s.num}</h3>
                   <p style={{ margin:"4px 0 0 0", fontSize:"11px", color:theme.subText, fontWeight:"600" }}>{s.label}</p>
@@ -1177,13 +1175,13 @@ function App() {
             </div>
             <div className="scroll-animate" style={{ display:"flex", justifyContent:"center", marginBottom:"32px", flexWrap:"wrap", gap:"8px", padding:"0 16px" }}>
               {certCategories.map(cat => (
-                <button key={cat} onClick={() => setCertFilter(cat)} className="pill-toggle-btn"
+                <button key={cat} onClick={() => setCertFilter(cat)} className={`pill-toggle-btn cert-filter-btn ${certFilter===cat?"is-active":""}`}
                   style={{ padding:"8px 18px", border:`1px solid ${certFilter===cat?"#2563eb":theme.border}`, borderRadius:"20px", fontSize:"12px", fontWeight:"700", backgroundColor:certFilter===cat?"#2563eb":theme.cardBg, color:certFilter===cat?"#fff":theme.subText }}>
                   {cat}{cat==="Semua" && <span style={{ marginLeft:"6px", fontSize:"10px", backgroundColor:certFilter===cat?"rgba(255,255,255,0.25)":"rgba(37,99,235,0.1)", color:certFilter===cat?"#fff":"#2563eb", padding:"1px 5px", borderRadius:"10px" }}>{sertifikatData.length}</span>}
                 </button>
               ))}
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(4,1fr)", gap:"20px", maxWidth:"1200px", margin:"0 auto" }}>
+            <div style={{ display:"grid", gridTemplateColumns:certCols, gap:"20px", maxWidth:"1200px", margin:"0 auto" }}>
               {filteredCerts.map((cert, idx) => (
                 <div key={`${certFilter}-${idx}`} className="cert-card-anim scroll-animate" style={{ animationDelay:`${idx*60}ms` }}>
                   <CertCard cert={cert} theme={theme} darkMode={darkMode} isMobile={isMobile} isTablet={isTablet} />
@@ -1193,22 +1191,29 @@ function App() {
           </section>
 
           {/* CONTACT */}
-          <section id="contact" style={{ padding:isMobile?"60px 28px":isTablet?"70px 48px":"80px 10%", backgroundColor:darkMode?"#1a2744":theme.sectionAlt, borderTop:`1px solid ${theme.border}`, display:"flex", flexDirection:isMobile?"column":"row", alignItems:isMobile?"flex-start":"center", justifyContent:"space-between", gap:"40px" }}>
+          <section id="contact" className="contact-section" style={{ padding:isMobile?"60px 28px":isTablet?"70px 48px":"80px 10%", backgroundColor:darkMode?"#1a2744":theme.sectionAlt, borderTop:`1px solid ${theme.border}`, display:"flex", flexDirection:isMobile?"column":"row", alignItems:isMobile?"flex-start":"center", justifyContent:"space-between", gap:"40px" }}>
             <div style={{ flex:1, maxWidth:"560px" }}>
               <p style={{ margin:"0 0 12px 0", fontSize:"12px", fontWeight:"700", color:"#3074d2", letterSpacing:"1.5px", textTransform:"uppercase" }}>PUNYA PROJECT?</p>
-              <h2 style={{ fontSize:isMobile?"28px":isTablet?"34px":"42px", fontWeight:"700", color:theme.text, margin:"0 0 18px 0", letterSpacing:"-1px", lineHeight:1.1, textAlign:"left" }}>Tertarik untuk berkolaborasi!</h2>
-              <p style={{ color:"#64748b", margin:"0 0 36px 0", fontSize:"15px", lineHeight:"1.75", maxWidth:"420px", textAlign:"left" }}>Saya selalu terbuka untuk peluang baru, kolaborasi menarik, atau hanya ingin berdiskusi tentang teknologi dan pengembangan. Klik tombol di bawah untuk mengirim email langsung!</p>
-              <a href="mailto:muhammadaliframadhanramadhan@gmail.com" className="btn-hover"
-                style={{ ...btn, padding:"13px 28px", fontSize:"14px", backgroundColor:"#3074d2", color:"#fff", border:"1px solid #3074d2", boxShadow:"0 4px 20px rgba(35,118,206,0.48)" }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Kirim Email
-              </a>
+              <h2 style={{ fontSize:isMobile?"28px":isTablet?"34px":"42px", fontWeight:"700", color:theme.text, margin:"0 0 18px 0", letterSpacing:"-1px", lineHeight:1.1, textAlign:"left" }}>Mari wujudkan bersama.</h2>
+              <p style={{ color:"#64748b", margin:"0 0 36px 0", fontSize:"15px", lineHeight:"1.75", maxWidth:"420px", textAlign:"left" }}>Saya terbuka untuk seluruh project, solusi digital, dan kolaborasi teknologi. Ceritakan ide atau kebutuhan Anda; kita mulai dengan percakapan.</p>
+              <div style={{ display:"flex", flexWrap:"wrap", alignItems:"center", gap:"12px" }}>
+                <a href="mailto:muhammadaliframadhanramadhan@gmail.com" className="btn-hover"
+                  style={{ ...btn, width:"157px", height:"44px", padding:"13px 28px", fontSize:"14px", backgroundColor:"#3074d2", color:"#fff", border:"1px solid #3074d2", boxShadow:"0 4px 20px rgba(35,118,206,0.48)" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  Kirim Email
+                </a>
+                <a href="https://github.com/maliframadhan-hub/" target="_blank" rel="noreferrer" className="btn-hover"
+                  style={{ ...btn, width:"157px", height:"44px", padding:"13px 22px", fontSize:"14px", backgroundColor:"#000", color:"#fff", border:"1px solid #000", textDecoration:"none" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
             </div>
             {!isMobile && <div style={{ flexShrink:0, opacity:darkMode?0.08:0.12, pointerEvents:"none" }}><svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke={theme.text} strokeWidth="0.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>}
           </section>
 
           {/* FOOTER */}
-          <footer style={{ padding:isMobile?"16px 20px":"18px 10%", backgroundColor:theme.cardBg, borderTop:`1px solid ${theme.border}`, display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:"8px", userSelect:"none", WebkitUserSelect:"none" }}>
+          <footer className="portfolio-footer" style={{ padding:isMobile?"16px 20px":"18px 10%", backgroundColor:theme.cardBg, borderTop:`1px solid ${theme.border}`, display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:"8px", userSelect:"none", WebkitUserSelect:"none" }}>
             <span style={{ fontSize:"13px", color:darkMode?"#94a3b8":"#64748b", fontWeight:"500" }}>© 2026 M. Alif Ramadhan. Dibuat dengan <span style={{ color:darkMode?"#a78bfa":"#7c3aed", fontWeight:"700" }}>☕</span> dan <span style={{ color:"#2563eb", fontWeight:"700" }}>&lt;/&gt;</span>.</span>
             <LiveClock />
           </footer>

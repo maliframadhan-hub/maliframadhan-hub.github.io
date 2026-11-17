@@ -182,3 +182,244 @@
     border-right-color: var(--border);
   }
 }
+
+:root {
+  --page: #0f172a;
+  --surface: #1e293b;
+  --surface-muted: #1a2744;
+  --ink: #f8fafc;
+  --muted: #94a3b8;
+  --line: rgba(255, 255, 255, 0.08);
+  --accent: #3b82f6;
+  --accent-dark: #a5b4fc;
+  --warm: #60a5fa;
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-shell {
+  color: var(--ink) !important;
+  background: var(--page) !important;
+}
+
+.portfolio-shell.theme-light {
+  --page: #f0f4f8;
+  --surface: #ffffff;
+  --surface-muted: #dce6f2;
+  --ink: #1e293b;
+  --muted: #475569;
+  --line: #c8d5e8;
+  --accent: #2563eb;
+  --accent-dark: #4f46e5;
+  --warm: #60a5fa;
+  --shadow: 0 16px 42px rgba(28, 48, 69, 0.1);
+}
+
+.hero-backdrop {
+  background: linear-gradient(115deg, color-mix(in srgb, var(--accent) 10%, var(--page)), var(--page) 62%, color-mix(in srgb, var(--warm) 9%, var(--page))) !important;
+}
+
+.hero-photo-frame {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+}
+
+.hero-photo-window {
+  background: var(--surface-muted) !important;
+}
+
+.hero-content h1 {
+  color: var(--ink) !important;
+}
+
+.hero-content h3 {
+  color: var(--accent) !important;
+}
+
+.hero-content .hero-badge-row span {
+  color: var(--accent-dark) !important;
+}
+
+.hero-content .hero-badge-row span:nth-child(2) {
+  background: color-mix(in srgb, var(--accent) 13%, var(--surface)) !important;
+}
+
+.hero-content .hero-badge-row span:nth-child(4) {
+  color: var(--accent-dark) !important;
+  background: color-mix(in srgb, var(--accent) 13%, var(--surface)) !important;
+}
+
+.hero-content .hero-live-badge,
+.hero-content .hero-stats-grid {
+  border-color: var(--line) !important;
+}
+
+.portfolio-section {
+  border-color: var(--line) !important;
+  background: var(--surface) !important;
+}
+
+#organisasi,
+#projects {
+  background: var(--surface-muted) !important;
+}
+
+.portfolio-section .section-heading,
+.portfolio-section > h2 {
+  color: var(--ink) !important;
+  font-weight: 800 !important;
+}
+
+.portfolio-section > div:first-child p {
+  color: var(--muted) !important;
+}
+
+.portfolio-section .scroll-animate > h2 {
+  color: var(--ink) !important;
+}
+
+.organization-card,
+.skill-card,
+.project-card,
+.cert-card {
+  min-width: 0;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+}
+
+#projects > div:last-child > div,
+#sertifikat > div:last-child > div {
+  min-width: 0;
+}
+
+#organisasi > div:last-child {
+  width: 100%;
+  min-width: 0;
+}
+
+.organization-card {
+  background: var(--surface) !important;
+}
+
+.organization-card h3,
+.skill-card span,
+.project-card h4,
+.cert-card h4 {
+  color: var(--ink) !important;
+}
+
+.organization-card > div:first-child {
+  border-color: var(--line) !important;
+}
+
+.organization-card > span,
+.project-card > div:nth-child(3) > p,
+.cert-card > div:nth-child(3) > p {
+  color: var(--muted) !important;
+}
+
+.skill-card {
+  background: var(--surface) !important;
+}
+
+.skill-card > div:last-child span:last-child {
+  color: var(--accent-dark) !important;
+  background: color-mix(in srgb, var(--accent) 13%, var(--surface)) !important;
+  border-color: var(--line) !important;
+}
+
+.project-card,
+.cert-card {
+  background: var(--surface) !important;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease !important;
+}
+
+.project-card:hover,
+.cert-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line)) !important;
+}
+
+.project-media,
+.cert-media {
+  background: var(--surface-muted) !important;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-media > span {
+  background: var(--accent) !important;
+}
+
+.cert-card > div:first-child {
+  background: var(--accent) !important;
+}
+
+.cert-media img {
+  object-position: center !important;
+}
+
+.cert-media > span {
+  color: var(--accent-dark) !important;
+  background: color-mix(in srgb, var(--accent) 16%, var(--surface)) !important;
+  border-color: var(--line) !important;
+}
+
+.cert-stat {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+}
+
+.cert-stat h3 {
+  color: var(--accent) !important;
+}
+
+.contact-section {
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface-muted)) !important;
+  border-color: var(--line) !important;
+}
+
+.contact-section h2 {
+  color: var(--ink) !important;
+}
+
+.contact-section p {
+  color: var(--muted) !important;
+}
+
+.tech-band {
+  background: #1a2335 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.tech-band h2 {
+  color: #f0f2f4 !important;
+}
+
+.tech-band .ts-label {
+  color: #94a3b8 !important;
+}
+
+.portfolio-footer {
+  color: var(--muted) !important;
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+}
+
+.portfolio-footer > span span {
+  color: var(--accent) !important;
+}
+
+.portfolio-shell button:focus-visible,
+.portfolio-shell a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
